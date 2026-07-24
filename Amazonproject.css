@@ -3,6 +3,17 @@ body{
 	padding-left: 20px;
 	padding-top: 82px;
 }
+/*.main-page{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}*/
+.main-page{
+	display: inline-block;
+	width: 215px;
+	border-right-color: rgb(240, 240, 240 , 1.0);
+	border-right-width: 2px;
+	border-right-style: solid;
+}
 .items{
 	display: block;
 	width: 165px;
