@@ -1,16 +1,17 @@
 body{
 	font-family: Roboto , Arial;
 	padding-left: 20px;
-	padding-top: 70px;
+	padding-top: 82px;
 }
 .items{
 	display: block;
-	width: 205px;
+	width: 165px;
+	height: 185px;
 }
 .mainPageItems{
 	display: block;
-	height: 205px;
-	width: 175px;
+	height: 185px;
+	width: 165px;
 }
 p{
 	display: block;
@@ -18,6 +19,7 @@ p{
 	justify-content: center;
 	object-fit: contain;
 	padding-bottom: 0;
+	height: 32px;
 }
 .ratings{
 	height: 20px;
@@ -32,17 +34,23 @@ p{
 	margin-bottom: 0;
 	padding-bottom: 0;
 }
+.price-rating{
+	height: 70px;
+}
 .screen-price{
 	font-weight: 500;
 }
 .noOfItems{
-	/*appearance: none; (strips that native OS overlay away completely so your border-radius can show)
-  -webkit-appearance: none; (Targets browsers powered by the 
+    /*appearance: none; (strips that native OS overlay away completely so your border-radius can show)*/
+  /*-webkit-appearance: none; (Targets browsers powered by the 
 	  WebKit/Blink engine, such as 
 	  Google Chrome, Apple Safari, Microsoft Edge, and Opera.)
   -moz-appearance: none; (Targets Mozilla Firefox)*/
-  border: 1px solid lightgray;
+  border: 1px , solid , rgb(213, 217, 217 / 1.0);
   height: 25px;
   width: 45px;
   border-radius: 7px;
+  box-shadow: 0 , 2px , 5px , rgba(213, 217, 217, 0.5);
+  background-color: rgb(240, 240, 240 / 1.0);
+  margin-bottom: 50px;
 }
