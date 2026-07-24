@@ -1,0 +1,48 @@
+body{
+	font-family: Roboto , Arial;
+	padding-left: 20px;
+	padding-top: 70px;
+}
+.items{
+	display: block;
+	width: 205px;
+}
+.mainPageItems{
+	display: block;
+	height: 205px;
+	width: 175px;
+}
+p{
+	display: block;
+	width: 205px;
+	justify-content: center;
+	object-fit: contain;
+	padding-bottom: 0;
+}
+.ratings{
+	height: 20px;
+	width: 105px;
+	padding-bottom: 0;
+}
+.rating-no{
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 3px;
+	color: #017cb6;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+.screen-price{
+	font-weight: 500;
+}
+.noOfItems{
+	/*appearance: none; (strips that native OS overlay away completely so your border-radius can show)
+  -webkit-appearance: none; (Targets browsers powered by the 
+	  WebKit/Blink engine, such as 
+	  Google Chrome, Apple Safari, Microsoft Edge, and Opera.)
+  -moz-appearance: none; (Targets Mozilla Firefox)*/
+  border: 1px solid lightgray;
+  height: 25px;
+  width: 45px;
+  border-radius: 7px;
+}
