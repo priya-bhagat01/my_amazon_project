@@ -3,16 +3,14 @@ body{
 	padding-left: 20px;
 	padding-top: 82px;
 }
-/*.main-page{
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-}*/
 .main-page{
 	display: inline-block;
 	width: 215px;
 	border-right-color: rgb(240, 240, 240 , 1.0);
 	border-right-width: 2px;
 	border-right-style: solid;
+	margin-bottom: 0;
+	padding-bottom: 0;
 }
 .items{
 	display: block;
@@ -23,6 +21,9 @@ body{
 	display: block;
 	height: 185px;
 	width: 165px;
+	align-items: center;
+	object-fit: contain;
+	margin-left: 15px;
 }
 p{
 	display: block;
@@ -84,4 +85,9 @@ p{
 	align-items: stretch;
 	padding: 20px , 6px;
 	color: rgb(33, 33, 33 , 1.0);
+}
+.Amazon-home-page{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 60px;
 }
