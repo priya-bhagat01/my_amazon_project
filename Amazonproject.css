@@ -1,21 +1,22 @@
+*, *::before, *::after{
+	box-sizing: border-box; /* (Prevents padding from expanding element widths) */
+}
 body{
 	font-family: Roboto , Arial;
-	margin: 0;
-	padding-left: 20px;
+	margin: 0;/*
+	padding-left: 20px;*/
 	padding-top: 82px;
 }
 .main-page{
+	display: flex;
+	flex-direction: column;
 	width: 195px;
-	border-right-color: rgb(240, 240, 240 , 1.0);
-	border-right-width: 2px;
-	border-right-style: solid;
-	border-bottom-color: rgb(240, 240, 240 , 1.0);
-	border-bottom-width: 2px;
-	border-bottom-style: solid;
+	border-right: 2px solid rgb(240, 240, 240 , 1.0);
+	border-bottom: 2px solid rgb(240, 240, 240 , 1.0);
 	margin-bottom: 0;
-	padding-bottom: 25px;
-	padding-right: 20px;
-	object-fit: contain;
+	padding: 15px;
+	align-content: center;
+	/*object-fit: contain;*/
 }
 .items{
 	display: block;
@@ -25,16 +26,18 @@ body{
 .mainPageItems{
 	display: block;
 	height: 185px;
-	width: 165px;
+	width: 100%;
 	align-items: center;
 	object-fit: contain;
-	margin-left: 15px;
+	margin: 0 auto;
 }
 p{
-	width: 205px;
-	justify-content: center;
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	/*justify-content: center;*/
 	object-fit: contain;
-	padding-bottom: 0;
+	/*padding-bottom: 0;*/
 	/*height: 32px;*/ /*Hides webkit line clamp ellipse*/
 }
 .limit-lines{
@@ -46,7 +49,6 @@ p{
 .ratings{
 	height: 20px;
 	width: 105px;
-	padding-bottom: 0;
 }
 .rating-no{
 	display: inline-block;
@@ -54,13 +56,12 @@ p{
 	margin-top: 3px;
 	color: #017cb6;
 	margin-bottom: 0;
-	padding-bottom: 0;
 }
 .price-rating{
 	height: 50px;
 }
 .itemDetails{
-	height: 45px;
+	height: 55px;
 }
 .screen-price{
 	display: block;
@@ -74,37 +75,36 @@ p{
 	  WebKit/Blink engine, such as 
 	  Google Chrome, Apple Safari, Microsoft Edge, and Opera.)
   -moz-appearance: none; (Targets Mozilla Firefox)*/
-  border: 1px , solid , rgb(213, 217, 217 , 1.0);
+  border: 1px solid rgb(213, 217, 217 , 1.0);
   height: 28px;
   width: 50px;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 400;
   color: rgb(33, 33, 33 , 1.0);
   padding-left: 5px;
   border-radius: 8px;
-  box-shadow: 0 , 2px , 5px , rgba(213, 217, 217, 0.5);
+  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
   background-color: rgb(240, 240, 240 , 1.0);
   margin-bottom: 50px;
   margin-top: 12px;
+  cursor: pointer;
 }
 .cartButton{
 	border: none;
-	display: block;
-	width: 172px;
+	width: 100%;
+	max-width: 172px;
 	height: 35px;
 	border-radius: 20px;
 	background-color: #FFD814;
 	font-size: 12px;
-	align-items: stretch;
-	padding: 20px , 6px;
+	cursor: pointer;/*
+	padding: 20px , 6px;*/
+	margin-top: auto;
 	color: rgb(33, 33, 33 , 1.0);
 }
 .Amazon-home-page{
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
-	grid-gap: 0;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-	vertical-align: top;
+	padding: 0 20px;
+	width: 100%;
 }
