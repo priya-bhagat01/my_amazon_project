@@ -1,16 +1,21 @@
 body{
 	font-family: Roboto , Arial;
+	margin: 0;
 	padding-left: 20px;
 	padding-top: 82px;
 }
 .main-page{
-	display: inline-block;
-	width: 215px;
+	width: 195px;
 	border-right-color: rgb(240, 240, 240 , 1.0);
 	border-right-width: 2px;
 	border-right-style: solid;
+	border-bottom-color: rgb(240, 240, 240 , 1.0);
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
 	margin-bottom: 0;
-	padding-bottom: 0;
+	padding-bottom: 25px;
+	padding-right: 20px;
+	object-fit: contain;
 }
 .items{
 	display: block;
@@ -26,12 +31,17 @@ body{
 	margin-left: 15px;
 }
 p{
-	display: block;
 	width: 205px;
 	justify-content: center;
 	object-fit: contain;
 	padding-bottom: 0;
-	height: 32px;
+	/*height: 32px;*/ /*Hides webkit line clamp ellipse*/
+}
+.limit-lines{
+	display: -webkit-box; /*(Activates webkit mode required for line-clamping)*/
+	-webkit-box-orient: vertical; /* (Sets axis direction to vertical) */
+	-webkit-line-clamp: 2; /* (Limits the visible content to 2 lines before inserting an ellipsis) */
+	overflow: hidden;
 }
 .ratings{
 	height: 20px;
@@ -48,6 +58,9 @@ p{
 }
 .price-rating{
 	height: 50px;
+}
+.itemDetails{
+	height: 45px;
 }
 .screen-price{
 	display: block;
@@ -88,6 +101,10 @@ p{
 }
 .Amazon-home-page{
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-gap: 60px;
+	grid-template-columns: repeat(6, 1fr);
+	grid-gap: 0;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	vertical-align: top;
 }
