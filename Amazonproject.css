@@ -158,7 +158,8 @@ p{
 	border-top-right-radius: 5px;
 	padding: 10px;
 }
-.ordersIcon{
+.ordersIcon{/*
+	margin-top: 20px;*/
 	display: flex;
 }
 .returnsPage ,
@@ -167,12 +168,43 @@ p{
 	color: #fff;
 	font-size: 15px;
 }
+.orderHistory{
+	display: flex;
+	flex-direction: column;
+}
+.returnsPage ,
+.ordersPage ,
+.order-para
+.return-para{
+	margin: 0;
+	padding: 0;
+}
+.return-para{
+	margin-bottom: 0;
+}
+.order-para{
+	margin-top: 0;
+}
+.returnsPage{
+	font-size: 13px;
+	height: 25px;
+	margin-top: 8px;
+	margin-bottom: 0;
+}
+.ordersPage{
+	margin-bottom: 15px;
+}
+.ordersPage ,
+.cart-para{
+	font-weight: bold;
+}
 .cartPage{
-	align-items: end;
-	vertical-align: bottom;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
 }
 .cartIcon{
-	margin: 16px;
-	height: 28px;
+	margin: 8px 0 16px 18px;
+	height: 30px;
 	width: 45px;
 }
