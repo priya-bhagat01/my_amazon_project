@@ -10,7 +10,8 @@ body{
 .main-page{
 	display: flex;
 	flex-direction: column;
-	width: 195px;
+	/*width: 195px;*/
+	width: 100%;
 	border-right: 2px solid rgb(240, 240, 240 , 1.0);
 	border-bottom: 2px solid rgb(240, 240, 240 , 1.0);
 	margin-bottom: 0;
