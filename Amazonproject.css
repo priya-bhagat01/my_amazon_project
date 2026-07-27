@@ -128,22 +128,26 @@ p{
 	margin-top: 5px;
 }
 .searchButton{
-	width: 800px;
+	display: flex;
+	flex: 1;
 	height: 42px;
 	border: none;
 	vertical-align: top;
 	border-radius: 5px;
 	align-items: center;
 	background-color: #fff;
-	margin-left: 40px;
 	font-size: 16px;
+	font-weight: 500;
 	padding-left: 12px;
 	padding-top: 5px;
-	font-weight: 500;
 }
 .search{
 	display: flex;
 	flex-direction: row;
+	flex: 1;
+	justify-content: center;
+	margin-left: 40px;
+	max-width: 800px;
 }
 .searchIcon{
 	margin-left: -5px;
@@ -156,7 +160,7 @@ p{
 	height: 42px;
 	border-bottom-right-radius: 5px;
 	border-top-right-radius: 5px;
-	padding: 10px;
+	padding: 10px 12px;
 }
 .ordersIcon{/*
 	margin-top: 20px;*/
@@ -171,6 +175,7 @@ p{
 .orderHistory{
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 .returnsPage ,
 .ordersPage ,
@@ -199,12 +204,13 @@ p{
 	font-weight: bold;
 }
 .cartPage{
+	padding-right: 18px;
 	display: flex;
 	flex-direction: row;
-	align-items: flex-end;
+	align-items: center;
 }
 .cartIcon{
-	margin: 8px 0 16px 18px;
-	height: 30px;
-	width: 45px;
+	margin: 18px 0 20px 18px;
+	height: 38px;
+	width: 50px;
 }
