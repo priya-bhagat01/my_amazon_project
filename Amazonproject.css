@@ -147,7 +147,7 @@ p{
 	flex: 1;
 	justify-content: center;
 	margin-left: 40px;
-	max-width: 800px;
+	max-width: 850px;
 }
 .searchIcon{
 	margin-left: -5px;
@@ -175,7 +175,6 @@ p{
 .orderHistory{
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 }
 .returnsPage ,
 .ordersPage ,
@@ -191,12 +190,14 @@ p{
 	margin-top: 0;
 }
 .returnsPage{
+	display: block;
 	font-size: 13px;
 	height: 25px;
 	margin-top: 8px;
 	margin-bottom: 0;
 }
 .ordersPage{
+	display: block;
 	margin-bottom: 15px;
 }
 .ordersPage ,
@@ -210,7 +211,16 @@ p{
 	align-items: center;
 }
 .cartIcon{
+	position: relative;
 	margin: 18px 0 20px 18px;
 	height: 38px;
 	width: 50px;
+}
+.cartCount{
+	position: absolute;
+	color: rgb(240, 136, 4 , 1.0);
+	font-weight: bold;
+	font-size: 18px;
+	top: 10px;
+	right: 62px;
 }
