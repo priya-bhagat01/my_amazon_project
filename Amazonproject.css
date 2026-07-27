@@ -128,15 +128,51 @@ p{
 	margin-top: 5px;
 }
 .searchButton{
-	width: 260px;
+	width: 800px;
 	height: 42px;
+	border: none;
 	vertical-align: top;
+	border-radius: 5px;
+	align-items: center;
+	background-color: #fff;
+	margin-left: 40px;
+	font-size: 16px;
+	padding-left: 12px;
+	padding-top: 5px;
+	font-weight: 500;
+}
+.search{
+	display: flex;
+	flex-direction: row;
+}
+.searchIcon{
+	margin-left: -5px;
+	height: 42px;
 }
 .searchIconImage{
-	margin-left: -6px;
 	background-color: rgb(254, 189, 105 , 1.0);
 	align-items: center;
 	vertical-align: top;
-	height: 41px;
-	border-radius: 5px;
+	height: 42px;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+	padding: 10px;
+}
+.ordersIcon{
+	display: flex;
+}
+.returnsPage ,
+.ordersPage ,
+.cartPage {
+	color: #fff;
+	font-size: 15px;
+}
+.cartPage{
+	align-items: end;
+	vertical-align: bottom;
+}
+.cartIcon{
+	margin: 16px;
+	height: 28px;
+	width: 45px;
 }
