@@ -10,18 +10,40 @@
 	top: 0;
 	left: 0;
 	right: 0;
+	padding-left: 15px;
+	padding-right: 15px;
 }
+.header .header-link:hover{
+	border: 1px solid white;
+}
+.header .header-link{
+	display: inline-block;
+	padding: 6px 6px 0 6px;
+	border-radius: 2px;
+	cursor: pointer;
+	border: 1px solid rgba(0, 0, 0, 0);
+	text-decoration: none;
+}
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}/*
 .header a {
 	text-decoration: none;
 	color: inherit;
 	display: flex;
-}
+}*/
 .AmazonIconImage{
 	cursor: pointer;
 	height: 30px;
 	width: 100px;
-	margin-left: 20px;
 	margin-top: 5px;
+}
+.AmazonIcon{
+	/*margin-left: 20px;
+	padding-left: 5px;*/
+	align-items: center;
 }
 .searchButton{
 	display: flex;
@@ -73,6 +95,8 @@
 	cursor: pointer;
 	display: flex;
 	flex-direction: column;
+	height: 25px;
+	justify-content: center;
 }
 .return-para{
 	margin-bottom: 0;
@@ -88,8 +112,8 @@
 	margin-bottom: 0;
 }
 .ordersPage{
-	display: block;
-	margin-bottom: 15px;
+	display: block;/*
+	margin-bottom: 15px;*/
 }
 .ordersPage ,
 .cart-para{
@@ -97,10 +121,12 @@
 }
 .cartPage{
 	cursor: pointer;
-	padding-right: 18px;
+	/*margin-right: 15px;*/
+	/*padding-right: 18px;*/
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	height: 42px;
 }
 .cartIcon{
 	position: relative;
@@ -114,5 +140,5 @@
 	font-weight: bold;
 	font-size: 18px;
 	top: 10px;
-	right: 62px;
+	right: 68px;
 }
