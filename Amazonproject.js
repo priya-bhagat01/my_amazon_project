@@ -459,31 +459,50 @@ products.forEach((product) => {
 	`
 });
 
-const cart = [];
+// 1. Get the ID of the thing clicked.
+// 2. Search the existing list to see if we already have it.
+// 3. IF found     → Increase its count.
+// 4. IF NOT found → Push a new object into the list.
+// const cart = [];
 
 document.querySelector('.Amazon-home-page')
  .innerHTML = productsHTML;
 
+// 1. Get the ID of the thing clicked.
+// 2. Search the existing list to see if we already have it.
+// 3. IF found     → Increase its count.
+// 4. IF NOT found → Push a new object into the list.
+
+const cart =[];
 document.querySelectorAll('.cartButton')
  .forEach((button) => {
- 	button.addEventListener('click' , () => {
- 		const productId = button.dataset.productId;
+ 	button.addEventListener(('click') , () => {
+ 		const productId = button.dataset.productId; // Get the ID from the button's dataset
 
- 		let matchingItem;
+ 		let matchingItem; 
 
- 		cart.forEach((item) => {
- 			if (productId === item.productId) {
- 				matchingItem = item;
- 			}
+ 		cart.forEach((item) => {	// Loop through cart to find if it already exists
+	 		if (productId === item.productId) {
+	 			matchingItem = item;
+	 		};
  		});
 
  		if (matchingItem) {
- 			matchingItem.quantity += 1;
- 		} else{
+ 			matchingItem.quantity += 1 ;
+ 		} else {
  			cart.push({
- 			productId: productId,
- 			quantity: 1 
+ 				productId: productId, 
+ 				quantity: 1
+ 			});
+ 		} 
+
+ 		let cartQuantity = 0;
+
+ 		cart.forEach((item) => {
+ 			cartQuantity += item.quantity;
  		});
- 		}	console.log(cart);	
+
+ 		document.querySelector('.cartCount')
+ 		 .innerHTML = cartQuantity;
  	});
- });
+});
