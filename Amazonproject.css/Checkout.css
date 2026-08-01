@@ -61,3 +61,48 @@ body{
 	margin-top: auto;
 	color: rgb(33, 33, 33 , 1.0);
 }
+.bill{
+	display: grid;
+	grid-template-columns: 1fr 350px;
+	column-gap: 20px;
+	align-items: start;
+}
+.orders{
+	border: 1px solid rgb(222, 222, 222);
+	border-radius: 4px;
+	padding: 16px 8px;
+}
+.order-title{
+	font-weight: bold;
+	font-size: 18px;
+}
+.items-no ,
+.items-price ,
+.shipping-options ,
+.shipping-price ,
+.rawTotal-value ,
+.rawTotal-price ,
+.tax-percent ,
+.tax-price ,
+.finalTotal ,
+.finalTotal-price{
+	display: inline-block;
+}
+.items-no ,
+.shipping-options ,
+.rawTotal-value ,
+.tax-percent ,
+.finalTotal{
+	width: 290px;
+}
+.orders p{
+	padding: 0;
+	margin: 5px;
+}
+.finalTotal ,
+.finalTotal-price{
+	display: inline-block;
+	font-weight: bold;
+	color: rgb(177, 39, 4);
+	font-size: 18px;
+}
