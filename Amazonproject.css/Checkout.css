@@ -40,6 +40,14 @@ body{
 	margin: 0;
 	padding: 0;
 }
+.no-of-items{
+	color: rgb(0, 113, 133);
+	font-size: 22px;
+}
+.checkoutPage:first-child{
+	display: inline-block;
+    color: black;
+}
 .Review{
 	padding-top: 120px;
 	font-weight: bold;
@@ -86,6 +94,7 @@ body{
 .tax-price ,
 .finalTotal ,
 .finalTotal-price{
+	font-size: 15px;
 	display: inline-block;
 }
 .items-no ,
@@ -105,4 +114,30 @@ body{
 	font-weight: bold;
 	color: rgb(177, 39, 4);
 	font-size: 18px;
+}
+.shipping-options ,
+.shipping-price{
+	margin-bottom: 10px;
+}
+.shipping-price{
+	margin-bottom: 5px;
+	border-bottom: 1.5px solid rgb(222, 222, 222);
+}
+.finalTotal ,
+.finalTotal-price{
+	padding-top: 18px;
+	border-top: 1.5px solid rgb(222, 222, 222);
+	padding-bottom: 24px;
+}
+.place-order{
+	border: none;
+	width: 325px;
+	height: 35px;
+	border-radius: 5px;
+	background-color: #FFD814;
+	font-size: 12px;
+	cursor: pointer;/*
+	margin-top: auto;*/
+	color: rgb(33, 33, 33 , 1.0);
+	opacity: 0.5;
 }
