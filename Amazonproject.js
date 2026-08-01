@@ -452,6 +452,11 @@ products.forEach((product) => {
 					<option value="10">10</option>
 				</select>
 		    </div>
+		    <div class="space"></div>
+		    <div class="added-message" data-product-id="${product.id}">
+		        <!-- <img class="added-to-cart" src="Amazonproject.png/Checkmark.jpg">
+		        Added -->
+		    </div>
 		    <div class="addingItems">
 		    	<button class="cartButton" data-product-id="${product.id}">Add To Cart</button>
 		    </div>
@@ -479,8 +484,24 @@ document.querySelectorAll('.cartButton')
  	button.addEventListener(('click') , () => {
  		const productId = button.dataset.productId; // Get the ID from the button's dataset
 
+ 		//Use DOM to get Added message when clicked on Add to Cart
+		const message = document.querySelector(`.added-message[data-product-id="${productId}"]`);
+		//Add class to message using .classList.add() then style to opacity 1
+		message.innerHTML = `<img class="added-to-cart" src="Amazonproject.png/Checkmark.jpg">
+		        Added`;
+		message.classList.add('style-message');
 
-		const selectedQuantity = document.querySelector(`.noOfItems[data-product-id="${productId}"]`);
+		//use setTimeout and make message disappear
+		setTimeout(() => {
+			message.classList.remove('style-message');
+		}, 2000);
+
+		//use DOM to get select element (noOfItems)
+		//get value selected in noOfItems (use .'value' property)
+		// when updating cart quantity use value instead of 1
+
+		const selectedQuantity = document.querySelector(`.noOfItems[data-product-id="${productId}"]`); 
+		//"Find the <select> with class .noOfItems whose data-product-id attribute is equal to
 		const selectedValue = Number(selectedQuantity.value);
 
  		let matchingItem; 
@@ -510,10 +531,7 @@ document.querySelectorAll('.cartButton')
  		 .innerHTML = cartQuantity;
  	});
 });
-
-//use DOM to get select element (noOfItems)
-//get value selected in noOfItems (use .'value' property)
-// when updating cart quantity use value instead of 1
-
-const selectedQuantity = document.querySelector('.noOfItems');
-const selectedValue = Number(selectedQuantity.value);
+//Use DOM to get Added message when clicked on Add to Cart
+const message = document.querySelector('.added-message');
+//Add class to message using .classList.add() then style to opacity 1
+message.classList.add('style-message');
