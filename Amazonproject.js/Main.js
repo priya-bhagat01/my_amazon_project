@@ -1,8 +1,6 @@
 "use strict";
 import {products} from '../Amazonproject.js/Data.js';
-import {cart} from '../Amazonproject.js/Cart.js';
-import {addCartItems} from '../Amazonproject.js/Cart.js';
-import {updateCart} from '../Amazonproject.js/Cart.js';
+import {cart, addCartItems} from '../Amazonproject.js/Cart.js';
 
 let productsHTML = '';
 
@@ -56,6 +54,16 @@ document.querySelector('.Amazon-home-page')
 
 let messageTimeouts;
 
+function updateCart() {
+	let cartQuantity = 0;
+
+ 		cart.forEach((cartItem) => {
+ 			cartQuantity += cartItem.quantity;
+ 		});
+
+ 		document.querySelector('.cartCount')
+ 		 .innerHTML = cartQuantity;
+ 	};
 document.querySelectorAll('.cartButton')
  .forEach((button) => {
  	button.addEventListener(('click') , () => {
@@ -76,7 +84,7 @@ document.querySelectorAll('.cartButton')
 		//use setTimeout and make message disappear
 		messageTimeouts = setTimeout(() => {
 			message.classList.remove('style-message');
-		}, 2000);
+		}, 1500);
 
 		//use DOM to get select element (noOfItems)
 		//get value selected in noOfItems (use .'value' property)

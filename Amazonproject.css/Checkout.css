@@ -1,0 +1,28 @@
+*, *::before, *::after{
+	box-sizing: border-box;
+body{
+	font-family: Roboto , Arial;
+	padding: 0 125px 125px 125px;
+}
+.checkout-header{
+	display: flex;
+	flex: 1;
+	width: 100%;
+	justify-content: space-between;
+	vertical-align: top;
+	margin-top: 15px;
+}
+.logo{
+	height: 30px;
+}
+.checkoutPage{
+	font-weight: 500;
+	font-size: 26px;
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+}
+.checkoutPage p{
+	margin: 0;
+	padding: 0;
+}

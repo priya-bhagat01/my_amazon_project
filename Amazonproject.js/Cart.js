@@ -18,13 +18,3 @@ export function addCartItems(productId , selectedValue) {
  			});
  		} 
 }
-export function updateCart() {
-		let cartQuantity = 0;
-
-	 		cart.forEach((cartItem) => {
-	 			cartQuantity += cartItem.quantity;
-	 		});
-
-	 		document.querySelector('.cartCount')
-	 		 .innerHTML = cartQuantity;
-	 	};
