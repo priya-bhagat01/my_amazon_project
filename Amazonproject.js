@@ -427,10 +427,10 @@ let productsHTML = '';
 products.forEach((product) => {
 	productsHTML += `
 		<div class="main-page">
-			<div class="items">
+			<div class="cartItems">
 				<img class="mainPageItems" src="${product.image}">
 		    </div>
-		    <div class="itemDetails">
+		    <div class="cartItemDetails">
 				<p class="main-page-title limit-lines">${product.name}</p>
 			</div>
 			<div class="price-rating">
@@ -481,6 +481,35 @@ document.querySelector('.Amazon-home-page')
 const cart =[];
 let messageTimeouts;
 
+function addCartItems(productId , selectedValue) {
+	 	let matchingItem; 
+
+ 		cart.forEach((cartItem) => {	// Loop through cart to find if it already exists
+	 		if (productId === cartItem.productId) {
+	 			matchingItem = cartItem;
+	 		};
+ 		});
+
+ 		if (matchingItem) {
+ 			matchingItem.quantity += selectedValue ;
+ 		} else {
+ 			cart.push({
+ 				productId: productId, 
+ 				quantity: selectedValue
+ 			});
+ 		} 
+}
+
+function updateCart() {
+	let cartQuantity = 0;
+
+ 		cart.forEach((cartItem) => {
+ 			cartQuantity += cartItem.quantity;
+ 		});
+
+ 		document.querySelector('.cartCount')
+ 		 .innerHTML = cartQuantity;
+ 	};
 document.querySelectorAll('.cartButton')
  .forEach((button) => {
  	button.addEventListener(('click') , () => {
@@ -511,31 +540,8 @@ document.querySelectorAll('.cartButton')
 		//"Find the <select> with class .noOfItems whose data-product-id attribute is equal to
 		const selectedValue = Number(selectedQuantity.value);
 
- 		let matchingItem; 
-
- 		cart.forEach((item) => {	// Loop through cart to find if it already exists
-	 		if (productId === item.productId) {
-	 			matchingItem = item;
-	 		};
- 		});
-
- 		if (matchingItem) {
- 			matchingItem.quantity += selectedValue ;
- 		} else {
- 			cart.push({
- 				productId: productId, 
- 				quantity: selectedValue
- 			});
- 		} 
-
- 		let cartQuantity = 0;
-
- 		cart.forEach((item) => {
- 			cartQuantity += item.quantity;
- 		});
-
- 		document.querySelector('.cartCount')
- 		 .innerHTML = cartQuantity;
+		addCartItems(productId , selectedValue);
+		updateCart();
  	});
 });
 //Use DOM to get Added message when clicked on Add to Cart
