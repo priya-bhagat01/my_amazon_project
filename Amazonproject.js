@@ -479,6 +479,8 @@ document.querySelector('.Amazon-home-page')
 // 4. IF NOT found → Push a new object into the list.
 
 const cart =[];
+let messageTimeouts;
+
 document.querySelectorAll('.cartButton')
  .forEach((button) => {
  	button.addEventListener(('click') , () => {
@@ -491,8 +493,13 @@ document.querySelectorAll('.cartButton')
 		        Added`;
 		message.classList.add('style-message');
 
+		//use clearTimeout to add 2 seconds timeout for multiple clicks
+		if (messageTimeouts) {
+			clearTimeout(messageTimeouts);
+		}
+
 		//use setTimeout and make message disappear
-		setTimeout(() => {
+		messageTimeouts = setTimeout(() => {
 			message.classList.remove('style-message');
 		}, 2000);
 
