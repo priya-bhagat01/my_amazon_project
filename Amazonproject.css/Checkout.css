@@ -4,6 +4,9 @@ body{
 	font-family: Roboto , Arial;
 	padding: 0 125px 125px 125px;
 }
+a{
+	text-decoration: none;
+}
 .checkout-header{
 	position: fixed;
 	background-color: white;/*
@@ -42,6 +45,7 @@ body{
 }
 .no-of-items{
 	color: rgb(0, 113, 133);
+	text-decoration: none;
 	font-size: 22px;
 }
 .checkoutPage:first-child{
@@ -68,6 +72,9 @@ body{
 	padding: 20px , 6px;*/
 	margin-top: auto;
 	color: rgb(33, 33, 33 , 1.0);
+}
+.addProduct:hover{
+	background-color: rgb(247, 202, 0);
 }
 .bill{
 	display: grid;
@@ -140,4 +147,7 @@ body{
 	margin-top: auto;*/
 	color: rgb(33, 33, 33 , 1.0);
 	opacity: 0.5;
+}
+.place-order:hover{
+	background-color: rgb(247, 202, 0);
 }
