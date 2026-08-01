@@ -12,7 +12,7 @@ body{
 	flex: 1;*/
 	justify-content: space-between;
 	vertical-align: top;
-	margin-top: 15px;
+	padding-top: 15px;
 }
 .left-section{
 	display: flex;
@@ -44,4 +44,20 @@ body{
 	padding-top: 120px;
 	font-weight: bold;
 	font-size: 22px;
+}
+.cart-status{
+	margin-bottom: 8px;
+}
+.addProduct{
+	border: none;
+	width: 100%;
+	max-width: 120px;
+	height: 35px;
+	border-radius: 10px;
+	background-color: #FFD814;
+	font-size: 15px;
+	cursor: pointer;/*
+	padding: 20px , 6px;*/
+	margin-top: auto;
+	color: rgb(33, 33, 33 , 1.0);
 }
