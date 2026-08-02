@@ -5,6 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Checkout</title>
 	<link rel="stylesheet" type="text/css" href="Amazonproject.css/Checkout.css">
+	<link rel="stylesheet" type="text/css" href="Amazonproject.css/CheckoutHead.css">
+	<link rel="stylesheet" type="text/css" href="Amazonproject.css/CheckoutOrders.css">
+	<script type="module" src="Checkout.js" defer></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -12,13 +15,13 @@
 <body>
 	<div class="checkout-main">
 			<div class="checkout-header">
-				<div class="left-section">
-					<a href="index.html" class="home-page">
+				<a href="index.html" class="home-page">
+					<div class="left-section">
 						<div class="amazon-logo">
 							<img class="logo" src="Amazonproject.png/Amazon-logo2.jpg">
 						</div>
-				    </a>
-				</div>
+					</div>
+				</a>
 				<div class="mid-section">
 					<div class="checkoutPage">
 						<p class="check-title">Checkout(
@@ -36,17 +39,62 @@
 		    <div class="Review">
 		    	<p>Review Your Order</p>
 		    </div>
-	    <div class="bill">
-		    <div class="added-products">
-		    	<div class="cart-status">
-		    		Your cart is empty
-		    	</div>
-		    	<a href="index.html" class="moreProducts">
-			    	<button class="addProduct">
-			    		View products
-			    	</button>
-		        </a>
-		    </div>
+	        <div class="bill">
+			    <div class="added-products">
+			    	<!-- <div class="cart-status">
+			    		Your cart is empty
+			    	</div>
+			    	<a href="index.html" class="moreProducts">
+				    	<button class="addProduct">
+				    		View products
+				    	</button>
+			        </a> -->
+			    <div class="item-status">
+			        <div class="delivery">
+			        	Delivery date:
+			        </div>
+			        <div class="cart-details">
+				        <div class="product-image">
+				        	<img class="item-image" src="Amazonproject.png/Basketball.jpg">
+				        </div>
+				    <div class="item-details">
+				        <div class="product-name">
+				        	Intermediate Size Basketball
+				        </div>
+				        <div class="product-price">
+				        	₹2000
+				        </div>
+				        <div class="product-quantity">
+				        	<div class="quantity">Quantity:</div>
+				        	<div class="update">Update</div>
+				        	<div class="delete">Delete</div>
+				        </div>
+				    </div>
+				    <div class="shipping-details">
+				        <div class="option">
+				        	Choose a delivery option:
+				        </div>
+				        <div class="shipping-date">
+				        	<div class="Delivery-free-date">
+					        	<input type="radio" name="date">
+					        	<p class="freeDate">Tuesday, August 11</p>
+					        	<p class="free">Free Shipping</p>
+				            </div>
+				            <div class="Next-delivery-date">
+					        	<input type="radio" name="date">
+					        	<p class="nearDueDate">Wednesday, August 5</p>
+					        	<p class="next-date">₹50-Shipping</p>
+				            </div>
+				            <div class="Delivery-date">
+					        	<input type="radio" name="date">
+					        	<p class="nearestDate">Monday, August 3</p>
+					        	<p class="another-date">₹100-Shipping</p>
+				            </div>
+				        </div>
+				    </div>
+			        </div>
+			    </div>
+			    </div>
 
 		    <div class="orders">
 		    	<div class="order-title">
@@ -67,7 +115,7 @@
 		    		<p>₹0</p>
 		    	</div>
 
-	    		<div class="rawTotal-value">
+	    		<div class="rawTotal-name">
 	    		    <p>Total before Tax:</p>
 	    	    </div>
 		    	<div class="rawTotal-price">

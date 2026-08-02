@@ -1,0 +1,46 @@
+.checkout-header{
+	position: fixed;
+	background-color: white;/*
+	width: 100%;*/
+	display: flex;/*
+	flex: 1;*/
+	justify-content: space-between;
+	vertical-align: top;
+	padding-top: 15px;
+}
+.left-section{
+	display: flex;
+	width: 105px;
+}
+.mid-section{
+	display: flex;
+	width: 995px;
+	justify-content: center;
+}
+.right-section{
+	display: flex;
+}
+.logo{
+	width: 100px;
+	height: 30px;
+}
+.checkoutPage{
+	font-weight: 500;
+	font-size: 26px;
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+}
+.checkoutPage p{
+	margin: 0;
+	padding: 0;
+}
+.no-of-items{
+	color: rgb(0, 113, 133);
+	text-decoration: none;
+	font-size: 22px;
+}
+.checkoutPage:first-child{
+	display: inline-block;
+    color: black;
+}

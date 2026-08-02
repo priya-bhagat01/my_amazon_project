@@ -1,0 +1,69 @@
+.orders{
+	border: 1px solid rgb(222, 222, 222);
+	border-radius: 4px;
+	padding: 16px 8px;
+}
+.order-title{
+	font-weight: bold;
+	font-size: 18px;
+}
+.items-no ,
+.items-price ,
+.shipping-options ,
+.shipping-price ,
+.rawTotal-name ,
+.rawTotal-price ,
+.tax-percent ,
+.tax-price ,
+.finalTotal ,
+.finalTotal-price{
+	font-size: 15px;
+	display: inline-block;
+}
+.items-no ,
+.shipping-options ,
+.rawTotal-value ,
+.tax-percent ,
+.finalTotal{
+	width: 290px;
+}
+.orders p{
+	padding: 0;
+	margin: 5px;
+}
+.finalTotal ,
+.finalTotal-price{
+	display: inline-block;
+	font-weight: bold;
+	color: rgb(177, 39, 4);
+	font-size: 18px;
+}
+.shipping-options ,
+.shipping-price{
+	margin-bottom: 10px;
+}
+.shipping-price{
+	margin-bottom: 5px;
+	border-bottom: 1.5px solid rgb(222, 222, 222);
+}
+.finalTotal ,
+.finalTotal-price{
+	padding-top: 18px;
+	border-top: 1.5px solid rgb(222, 222, 222);
+	padding-bottom: 24px;
+}
+.place-order{
+	border: none;
+	width: 325px;
+	height: 35px;
+	border-radius: 5px;
+	background-color: #FFD814;
+	font-size: 12px;
+	cursor: pointer;/*
+	margin-top: auto;*/
+	color: rgb(33, 33, 33 , 1.0);
+	opacity: 0.5;
+}
+.place-order:hover{
+	background-color: rgb(247, 202, 0);
+}
