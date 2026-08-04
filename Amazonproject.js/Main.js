@@ -1,6 +1,6 @@
 "use strict";
 import {products} from '../Amazonproject.js/Data.js';
-import {cart, addCartItems} from '../Amazonproject.js/Cart.js';
+import {cart, saveStorage, addCartItems} from '../Amazonproject.js/Cart.js';
 
 let productsHTML = '';
 
@@ -64,6 +64,9 @@ function updateCart() {
  		document.querySelector('.cartCount')
  		 .innerHTML = cartQuantity;
  	};
+
+updateCart();
+
 document.querySelectorAll('.cartButton')
  .forEach((button) => {
  	button.addEventListener(('click') , () => {
