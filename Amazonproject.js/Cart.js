@@ -20,5 +20,6 @@ export function addCartItems(productId , selectedValue) {
  				productId: productId, 
  				quantity: selectedValue
  			});
- 		} 
+ 		}
+ 	saveStorage();
 }

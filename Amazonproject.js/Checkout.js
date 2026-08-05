@@ -1,6 +1,6 @@
 "use strict";
 import {products} from '../Amazonproject.js/Data.js';
-import {cart, addCartItems} from '../Amazonproject.js/Cart.js';
+import {cart, saveStorage, addCartItems} from '../Amazonproject.js/Cart.js';
 
 //we have to make checkout at header change its value acc
 //1. what data do I need?
@@ -17,3 +17,71 @@ cart.forEach((items) => {
 
 document.querySelector('.no-of-items')
  .innerHTML = `${cartQuantity} items`;
+//1. I need to import id quantity and products data (cart[], and products)
+//2. I need to loop through cart, match productId with id of cart item,
+// then I have to generate HTML for that product
+//3. I need to use added-items class and display it using DOM
+
+let cartHTML = '';
+
+cart.forEach((cartItem) => {
+	const productId = cartItem.productId;
+
+	let matchingProduct;
+
+	products.forEach((product) => {
+		if (product.id === productId) {
+			matchingProduct = product;
+		};
+    })
+    cartHTML += `
+    	<div class="item-status">
+	        <div class="delivery">
+	        	Delivery date: Tuesday, August 11
+	        </div>
+	        <div class="cart-details">
+		        <div class="product-image">
+		        	<img class="item-image" src="${matchingProduct.image}">
+		        </div>
+		    <div class="item-details">
+		        <div class="product-name">
+		        	${matchingProduct.name}
+		        </div>
+		        <div class="product-price">
+		        	₹${matchingProduct.price}
+		        </div>
+		        <div class="product-quantity">
+		        	<div class="quantity">Quantity: ${cartItem.quantity}</div>
+		        	<div class="update">Update</div>
+		        	<div class="delete">Delete</div>
+		        </div>
+		    </div>
+		    <div class="shipping-details">
+		        <div class="option">
+		        	Choose a delivery option:
+		        </div>
+		        <div class="shipping-date">
+		        	<div class="Delivery-free-date">
+			        	<input type="radio" name="date" class="any-day">
+			        	<p class="freeDate">Tuesday, August 11</p>
+			        	<p class="free">Free Shipping</p>
+		            </div>
+		            <div class="Next-delivery-date">
+			        	<input type="radio" name="date" class="near-day">
+			        	<p class="nearDueDate">Wednesday, August 5</p>
+			        	<p class="next-date">₹50 - Shipping</p>
+		            </div>
+		            <div class="Delivery-date">
+			        	<input type="radio" name="date" class="same-day">
+			        	<p class="nearestDate">Monday, August 3</p>
+			        	<p class="another-date">₹100 - Shipping</p>
+		            </div>
+		        </div>
+		    </div>
+	        </div>
+	    </div>
+    `;
+});
+
+document.querySelector('.added-products')
+ .innerHTML = cartHTML;
