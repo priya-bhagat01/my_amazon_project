@@ -40,6 +40,7 @@ a{
 .item-status{
 	border: 1px solid rgb(222, 222, 222);
 	padding: 15px;
+	margin-bottom: 10px;
 }
 .delivery{
 	color: rgb(0, 118, 0);
@@ -51,7 +52,14 @@ a{
 	display: grid;
 	grid-template-columns: 110px 1fr 1fr;
 }
+.product-image{
+	width: 100px;
+	height: 100px;
+	object-fit: contain;
+}
 .item-image{
+	width: 100px;
+	object-fit: contain;
 	height: 100px;
 }
 .product-name{

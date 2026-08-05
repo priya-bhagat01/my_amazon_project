@@ -1,6 +1,6 @@
 "use strict";
 import {products} from '../Amazonproject.js/Data.js';
-import {cart, saveStorage, addCartItems} from '../Amazonproject.js/Cart.js';
+import {cart, saveStorage, addCartItems, removeFromCart} from '../Amazonproject.js/Cart.js';
 
 //we have to make checkout at header change its value acc
 //1. what data do I need?
@@ -10,13 +10,20 @@ import {cart, saveStorage, addCartItems} from '../Amazonproject.js/Cart.js';
 //3. where does result go in DOM
 //It goes in checkout header brackets, innerHTML = ${variable}
 
-let cartQuantity = 0;
-cart.forEach((items) => {
-	cartQuantity += items.quantity ;
+function updateHeaderQuantity() {
+
+	let cartQuantity = 0;
+
+	cart.forEach((item) => {
+	cartQuantity += item.quantity;
 });
 
 document.querySelector('.no-of-items')
  .innerHTML = `${cartQuantity} items`;
+};
+
+updateHeaderQuantity();
+
 //1. I need to import id quantity and products data (cart[], and products)
 //2. I need to loop through cart, match productId with id of cart item,
 // then I have to generate HTML for that product
@@ -24,10 +31,11 @@ document.querySelector('.no-of-items')
 
 let cartHTML = '';
 
+let matchingProduct;
+
+
 cart.forEach((cartItem) => {
 	const productId = cartItem.productId;
-
-	let matchingProduct;
 
 	products.forEach((product) => {
 		if (product.id === productId) {
@@ -86,3 +94,21 @@ cart.forEach((cartItem) => {
 
 document.querySelector('.added-products')
  .innerHTML = cartHTML;
+
+document.querySelectorAll('.delete')
+ .forEach((link) => {
+	link.addEventListener('click', () => {
+		const productId = link.dataset.productId;
+
+		removeFromCart(productId);
+
+		const container = document.querySelector(`.item-status`)
+
+		if (container) {
+			container.remove();
+		}
+
+		saveStorage();
+		updateHeaderQuantity();
+	})
+})
