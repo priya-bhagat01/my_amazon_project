@@ -52,8 +52,8 @@ cart.forEach((cartItem) => {
 		        </div>
 		        <div class="product-quantity">
 		        	<div class="quantity">Quantity: ${cartItem.quantity}</div>
-		        	<div class="update">Update</div>
-		        	<div class="delete">Delete</div>
+		        	<div class="update" data-product-id="${matchingProduct.id}">Update</div>
+		        	<div class="delete" data-product-id="${matchingProduct.id}">Delete</div>
 		        </div>
 		    </div>
 		    <div class="shipping-details">
@@ -62,17 +62,18 @@ cart.forEach((cartItem) => {
 		        </div>
 		        <div class="shipping-date">
 		        	<div class="Delivery-free-date">
-			        	<input type="radio" name="date" class="any-day">
+			        	<input type="radio" name="date-${matchingProduct.id}" class="any-day">
 			        	<p class="freeDate">Tuesday, August 11</p>
 			        	<p class="free">Free Shipping</p>
 		            </div>
 		            <div class="Next-delivery-date">
-			        	<input type="radio" name="date" class="near-day">
+			        	<input type="radio" name="date-${matchingProduct.id}" class="near-day">
 			        	<p class="nearDueDate">Wednesday, August 5</p>
 			        	<p class="next-date">₹50 - Shipping</p>
 		            </div>
 		            <div class="Delivery-date">
-			        	<input type="radio" name="date" class="same-day">
+			        	<input type="radio" name="date-${matchingProduct.id}" class="same-day"> 
+			        	<!-- doesn't allow to change radio button from one product to other -->
 			        	<p class="nearestDate">Monday, August 3</p>
 			        	<p class="another-date">₹100 - Shipping</p>
 		            </div>
