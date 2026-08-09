@@ -1,6 +1,6 @@
 "use strict";
 import {products} from '../Amazonproject.js/Data.js';
-import {cart, saveStorage, addCartItems, removeFromCart} from '../Amazonproject.js/Cart.js';
+import {cart, saveStorage, addCartItems, removeFromCart, updateQuantity} from '../Amazonproject.js/Cart.js';
 
 //we have to make checkout at header change its value acc
 //1. what data do I need?
@@ -102,7 +102,7 @@ document.querySelectorAll('.delete')
 
 		removeFromCart(productId);
 
-		const container = document.querySelector(`.cart-item-conatiner-${matchingProduct.id}`)
+		const container = document.querySelector(`.cart-item-conatiner-${productId}`)
 
 		if (container) {
 			container.remove();
@@ -129,10 +129,13 @@ document.querySelectorAll('.update')
 
  	const quantityConatiner = contain.querySelector('.product-quantity');
 
+ 	const matchingCartItem = cart.find((item) =>
+ 		item.productId === productId);
+
  	quantityConatiner.innerHTML = `
  		<div class="productQuantity">
 	 		<div class="quantity">
-	 		  Quantity: <input class="quantity-input-${productId} updateQuantity" type="number" value ="1" min="0">
+	 		  Quantity: <input class="quantity-input-${productId} updateQuantity" type="number" value ="${matchingCartItem.quantity}" min="0">
 	 		</div>
 	 		<div class="saveQuantity" data-product-id="${productId}">Save</div>
 			<div class="delete" data-product-id="${productId}">Delete</div>
@@ -147,9 +150,10 @@ document.querySelectorAll('.update')
  			removeFromCart(productId);
  			contain.remove();
  		} else {
- 			addCartItems(productId, newQuantity);
+ 			updateQuantity(productId, newQuantity);
  			updateHeaderQuantity();
  		};
+ 	saveStorage();
  	});
  	});
 });
