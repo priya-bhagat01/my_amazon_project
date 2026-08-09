@@ -105,6 +105,8 @@ cart.forEach((cartItem) => {
 			saveStorage();
 			renderCheckout();
 			updateHeaderQuantity();
+			updateItems();
+			cartItemPrice();
 		});
 	});
 
@@ -151,6 +153,7 @@ cart.forEach((cartItem) => {
 	 	renderCheckout();
 	 	updateHeaderQuantity();
 	 	updateItems();
+	 	cartItemPrice();
 	 	});
 	 	});
 	});
@@ -166,8 +169,40 @@ function updateItems() {
 	});
 
 document.querySelector('.itemsNo')
- .innerHTML = `Items(${ItemsQuantity})`;
+ .innerHTML = `Items(${ItemsQuantity}):`;
 
 saveStorage();
 };
+
 updateItems();
+
+//loop through products
+//Get product id from cart
+//Get product price from products
+//Multiply products price with cart quantity and put price using DOM
+
+function cartItemPrice() {
+	let productPrice = 0;
+
+	cart.forEach((cartItem) => {
+		const productId = cartItem.productId;
+		const cartItemQuantity = cartItem.quantity;
+
+		let matchingProduct;
+
+		products.forEach((product) => {
+			if (product.id === productId) {
+				matchingProduct = product
+			};
+		});
+
+		if (matchingProduct) {
+			productPrice += matchingProduct.price*cartItemQuantity;
+		}
+	});
+
+	document.querySelector('.itemsPrice')
+     .innerHTML = `₹${productPrice}`;
+};
+
+cartItemPrice();

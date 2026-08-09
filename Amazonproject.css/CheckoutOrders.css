@@ -22,10 +22,10 @@
 }
 .items-no ,
 .shipping-options ,
-.rawTotal-value ,
+.rawTotal-name ,
 .tax-percent ,
 .finalTotal{
-	width: 290px;
+	width: 270px;
 }
 .orders p{
 	padding: 0;
