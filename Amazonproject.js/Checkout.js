@@ -150,9 +150,24 @@ cart.forEach((cartItem) => {
 	 	saveStorage();
 	 	renderCheckout();
 	 	updateHeaderQuantity();
+	 	updateItems();
 	 	});
 	 	});
 	});
 
 };
 renderCheckout();
+
+function updateItems() {
+	let ItemsQuantity = 0;
+
+	cart.forEach((items) => {
+		ItemsQuantity += items.quantity;
+	});
+
+document.querySelector('.itemsNo')
+ .innerHTML = `Items(${ItemsQuantity})`;
+
+saveStorage();
+};
+updateItems();
