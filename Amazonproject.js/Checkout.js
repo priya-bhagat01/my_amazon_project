@@ -1,6 +1,7 @@
 "use strict";
 import {products} from '../Amazonproject.js/Data.js';
 import {cart, saveStorage, addCartItems, removeFromCart, updateQuantity} from '../Amazonproject.js/Cart.js';
+import {calculateDeliveryDate} from './DeliveryDate.js';
 
 //we have to make checkout at header change its value acc
 //1. what data do I need?
@@ -45,7 +46,7 @@ cart.forEach((cartItem) => {
     cartHTML += `
     	<div class="item-status cart-item-conatiner-${matchingProduct.id}">
 	        <div class="delivery">
-	        	Delivery date: Tuesday, August 11
+	        	Delivery date: ${calculateDeliveryDate(0)}
 	        </div>
 	        <div class="cart-details">
 		        <div class="product-image">
@@ -71,18 +72,18 @@ cart.forEach((cartItem) => {
 		        <div class="shipping-date">
 		        	<div class="Delivery-free-date">
 			        	<input type="radio" name="date-${matchingProduct.id}" class="any-day">
-			        	<p class="freeDate">Tuesday, August 11</p>
+			        	<p class="freeDate">${calculateDeliveryDate(7)}</p>
 			        	<p class="free">Free Shipping</p>
 		            </div>
 		            <div class="Next-delivery-date">
 			        	<input type="radio" name="date-${matchingProduct.id}" class="near-day">
-			        	<p class="nearDueDate">Wednesday, August 5</p>
+			        	<p class="nearDueDate">${calculateDeliveryDate(3)}</p>
 			        	<p class="next-date">₹50 - Shipping</p>
 		            </div>
 		            <div class="Delivery-date">
 			        	<input type="radio" name="date-${matchingProduct.id}" class="same-day"> 
 			        	<!-- doesn't allow to change radio button from one product to other -->
-			        	<p class="nearestDate">Monday, August 3</p>
+			        	<p class="nearestDate">${calculateDeliveryDate(1)}</p>
 			        	<p class="another-date">₹100 - Shipping</p>
 		            </div>
 		        </div>
@@ -94,7 +95,7 @@ cart.forEach((cartItem) => {
 	document.querySelector('.added-products')
      .innerHTML = cartHTML;
 
-    
+
 	document.querySelectorAll('.delete')
 	 .forEach((link) => {
 		link.addEventListener('click', () => {
@@ -155,7 +156,3 @@ cart.forEach((cartItem) => {
 
 };
 renderCheckout();
-
-//Get today's date
-//Do calculations (7 days, 3 days, 1 day)
-//Display in easy to read format
