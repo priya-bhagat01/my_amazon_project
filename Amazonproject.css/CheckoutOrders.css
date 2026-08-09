@@ -67,3 +67,24 @@
 .place-order:hover{
 	background-color: rgb(247, 202, 0);
 }
+.updateQuantity{
+	width: 50px;
+	height: 25px;
+	font-size: 16px;
+}
+.updateQuantity:focus{
+	border-color: rgb(196, 80, 0);
+	outline: none;
+}
+.saveQuantity:hover{
+	color: rgb(196, 80, 0);
+}
+.saveQuantity{
+	width: 45px;
+	color: #017cb6;
+}
+.productQuantity ,
+.saveQuantity ,
+.updateQuantity{
+	display: inline-block;
+}

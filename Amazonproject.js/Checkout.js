@@ -43,7 +43,7 @@ cart.forEach((cartItem) => {
 		};
     })
     cartHTML += `
-    	<div class="item-status">
+    	<div class="item-status cart-item-conatiner-${matchingProduct.id}">
 	        <div class="delivery">
 	        	Delivery date: Tuesday, August 11
 	        </div>
@@ -102,7 +102,7 @@ document.querySelectorAll('.delete')
 
 		removeFromCart(productId);
 
-		const container = document.querySelector(`.item-status`)
+		const container = document.querySelector(`.cart-item-conatiner-${matchingProduct.id}`)
 
 		if (container) {
 			container.remove();
@@ -110,5 +110,41 @@ document.querySelectorAll('.delete')
 
 		saveStorage();
 		updateHeaderQuantity();
-	})
-})
+	});
+});
+
+//1. We need to Grab all update buttons in the page using class update 
+//2. We need to add event listener click, then we need to grab product I'd with dataset property,
+// then we'll have to change innerHTML with `` and write html there for input, 
+//and save on side of that, we will also have to use function updateHeaderQuantity, 
+//3. In DOM this will go for quantity div to inc quantity or to completely disappear
+
+document.querySelectorAll('.update')
+ .forEach((updateButton) => {
+ 	updateButton.addEventListener('click', () => {
+ 	
+ 	const productId = updateButton.dataset.productId;
+ 	
+ 	const contain = document.querySelector(`.cart-item-conatiner-${productId}`);
+
+ 	const quantityConatiner = contain.querySelector('.product-quantity');
+
+ 	quantityConatiner.innerHTML = `
+ 		<div class="productQuantity">
+	 		<div class="quantity">
+	 		  Quantity: <input class="updateQuantity" type="number" value ="1" min="0">
+	 		</div>
+	 		<div class="saveQuantity" data-product-id="${productId}">Save</div>
+			<div class="delete" data-product-id="${productId}">Delete</div>
+		</div>
+ 	`;
+
+ 	// document.querySelector('.quantity')
+ 	//  .innerHTML = cartUpdate;
+ 	 
+ 	});
+});
+
+//Get today's date
+//Do calculations (7 days, 3 days, 1 day)
+//Display in easy to read format
