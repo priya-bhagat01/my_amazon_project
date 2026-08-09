@@ -132,16 +132,25 @@ document.querySelectorAll('.update')
  	quantityConatiner.innerHTML = `
  		<div class="productQuantity">
 	 		<div class="quantity">
-	 		  Quantity: <input class="updateQuantity" type="number" value ="1" min="0">
+	 		  Quantity: <input class="quantity-input-${productId} updateQuantity" type="number" value ="1" min="0">
 	 		</div>
 	 		<div class="saveQuantity" data-product-id="${productId}">Save</div>
 			<div class="delete" data-product-id="${productId}">Delete</div>
 		</div>
  	`;
 
- 	// document.querySelector('.quantity')
- 	//  .innerHTML = cartUpdate;
- 	 
+ 	const saveLink = document.querySelector('.saveQuantity');
+ 	saveLink.addEventListener('click', () => {
+ 		const newQuantity = Number(document.querySelector(`.quantity-input-${productId}`).value);
+
+ 		if (newQuantity === 0) {
+ 			removeFromCart(productId);
+ 			contain.remove();
+ 		} else {
+ 			addCartItems(productId, newQuantity);
+ 			updateHeaderQuantity();
+ 		};
+ 	});
  	});
 });
 
