@@ -24,19 +24,19 @@ document.querySelector('.no-of-items')
 
 updateHeaderQuantity();
 
-//1. I need to import id quantity and products data (cart[], and products)
+
+function renderCheckout() {
+	let cartHTML = '';
+
+	//1. I need to import id quantity and products data (cart[], and products)
 //2. I need to loop through cart, match productId with id of cart item,
 // then I have to generate HTML for that product
 //3. I need to use added-items class and display it using DOM
 
-let cartHTML = '';
-
-let matchingProduct;
-
-
 cart.forEach((cartItem) => {
 	const productId = cartItem.productId;
 
+    let matchingProduct;
 	products.forEach((product) => {
 		if (product.id === productId) {
 			matchingProduct = product;
@@ -88,75 +88,73 @@ cart.forEach((cartItem) => {
 		        </div>
 		    </div>
 	        </div>
-	    </div>
-    `;
-});
+	    </div>`;
+    });
 
-document.querySelector('.added-products')
- .innerHTML = cartHTML;
+	document.querySelector('.added-products')
+     .innerHTML = cartHTML;
 
-document.querySelectorAll('.delete')
- .forEach((link) => {
-	link.addEventListener('click', () => {
-		const productId = link.dataset.productId;
+    
+	document.querySelectorAll('.delete')
+	 .forEach((link) => {
+		link.addEventListener('click', () => {
+			const productId = link.dataset.productId;
 
-		removeFromCart(productId);
-
-		const container = document.querySelector(`.cart-item-conatiner-${productId}`)
-
-		if (container) {
-			container.remove();
-		}
-
-		saveStorage();
-		updateHeaderQuantity();
+			removeFromCart(productId);
+			saveStorage();
+			renderCheckout();
+			updateHeaderQuantity();
+		});
 	});
-});
 
-//1. We need to Grab all update buttons in the page using class update 
-//2. We need to add event listener click, then we need to grab product I'd with dataset property,
-// then we'll have to change innerHTML with `` and write html there for input, 
-//and save on side of that, we will also have to use function updateHeaderQuantity, 
-//3. In DOM this will go for quantity div to inc quantity or to completely disappear
+	//1. We need to Grab all update buttons in the page using class update 
+	//2. We need to add event listener click, then we need to grab product I'd with dataset property,
+	// then we'll have to change innerHTML with `` and write html there for input, 
+	//and save on side of that, we will also have to use function updateHeaderQuantity, 
+	//3. In DOM this will go for quantity div to inc quantity or to completely disappear
 
-document.querySelectorAll('.update')
- .forEach((updateButton) => {
- 	updateButton.addEventListener('click', () => {
- 	
- 	const productId = updateButton.dataset.productId;
- 	
- 	const contain = document.querySelector(`.cart-item-conatiner-${productId}`);
+	document.querySelectorAll('.update')
+	 .forEach((updateButton) => {
+	 	updateButton.addEventListener('click', () => {
+	 	
+	 	const productId = updateButton.dataset.productId;
+	 	
+	 	const contain = document.querySelector(`.cart-item-conatiner-${productId}`);
 
- 	const quantityConatiner = contain.querySelector('.product-quantity');
+	 	const quantityConatiner = contain.querySelector('.product-quantity');
 
- 	const matchingCartItem = cart.find((item) =>
- 		item.productId === productId);
+	 	const matchingCartItem = cart.find((item) =>
+	 		item.productId === productId);
 
- 	quantityConatiner.innerHTML = `
- 		<div class="productQuantity">
-	 		<div class="quantity">
-	 		  Quantity: <input class="quantity-input-${productId} updateQuantity" type="number" value ="${matchingCartItem.quantity}" min="0">
-	 		</div>
-	 		<div class="saveQuantity" data-product-id="${productId}">Save</div>
-			<div class="delete" data-product-id="${productId}">Delete</div>
-		</div>
- 	`;
+	 	quantityConatiner.innerHTML = `
+	 		<div class="productQuantity">
+		 		<div class="quantity">
+		 		  Quantity: <input class="quantity-input-${productId} updateQuantity" type="number" value ="${matchingCartItem.quantity}" min="0">
+		 		</div>
+		 		<div class="saveQuantity" data-product-id="${productId}">Save</div>
+				<div class="delete" data-product-id="${productId}">Delete</div>
+			</div>
+	 	`;
 
- 	const saveLink = document.querySelector('.saveQuantity');
- 	saveLink.addEventListener('click', () => {
- 		const newQuantity = Number(document.querySelector(`.quantity-input-${productId}`).value);
+	 	const saveLink = contain.querySelector('.saveQuantity');
+	 	saveLink.addEventListener('click', () => {
+	 		const newQuantity = Number(document.querySelector(`.quantity-input-${productId}`).value);
 
- 		if (newQuantity === 0) {
- 			removeFromCart(productId);
- 			contain.remove();
- 		} else {
- 			updateQuantity(productId, newQuantity);
- 			updateHeaderQuantity();
- 		};
- 	saveStorage();
- 	});
- 	});
-});
+	 		if (newQuantity === 0) {
+	 			removeFromCart(productId);
+	 			contain.remove();
+	 		} else {
+	 			updateQuantity(productId, newQuantity);
+	 		};
+	 	saveStorage();
+	 	renderCheckout();
+	 	updateHeaderQuantity();
+	 	});
+	 	});
+	});
+
+};
+renderCheckout();
 
 //Get today's date
 //Do calculations (7 days, 3 days, 1 day)

@@ -44,4 +44,4 @@ export function updateQuantity(productId, newQuantity) {
 		}
 	});
 	saveStorage();
-}
+};
