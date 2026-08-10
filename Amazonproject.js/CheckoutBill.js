@@ -1,5 +1,6 @@
 import {products} from '../Amazonproject.js/Data.js';
 import {cart, saveStorage, addCartItems, removeFromCart, updateQuantity} from '../Amazonproject.js/Cart.js';
+import {deliveryOptions} from './DeliveryDate.js'
 export function updateItems() {
 	let ItemsQuantity = 0;
 
@@ -41,3 +42,21 @@ export function cartItemPrice() {
 	document.querySelector('.itemsPrice')
      .innerHTML = `₹${productPrice}`;
 };
+
+export function cartShippingPrice() {
+	let shippingFee = 0;
+
+	cart.forEach((cartItem) => {
+		const productId = cartItem.productId;
+		const deliveryOptionId = cartItem.deliveryOptionId;
+
+		const deliveryOption = deliveryOptions.find(option => option.id === deliveryOptionId);
+
+		if (deliveryOption) {
+			shippingFee += deliveryOption.price;
+		}
+	});
+
+	document.querySelector('.shippingPrice')
+	 .innerHTML = `₹${shippingFee}`;
+}
