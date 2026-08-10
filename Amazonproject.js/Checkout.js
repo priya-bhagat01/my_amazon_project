@@ -2,7 +2,7 @@
 import {products} from '../Amazonproject.js/Data.js';
 import {cart, saveStorage, addCartItems, removeFromCart, updateQuantity} from '../Amazonproject.js/Cart.js';
 import {calculateDeliveryDate, deliveryOptions} from './DeliveryDate.js';
-import {updateItems, cartItemPrice, cartShippingPrice} from './CheckoutBill.js';
+import {updateItems, cartItemPrice, cartShippingPrice, updateTotalBeforeTax} from './CheckoutBill.js';
 import {updateHeaderQuantity} from './CheckoutHeader.js';
 
 updateHeaderQuantity();
@@ -176,6 +176,7 @@ cart.forEach((cartItem) => {
 	  		saveStorage();
 	  		renderCheckout();
 	  		cartShippingPrice();
+	  		updateTotalBeforeTax();
 	  	});
 	  });
 
@@ -187,3 +188,5 @@ updateItems();
 cartItemPrice();
 
 cartShippingPrice();
+
+updateTotalBeforeTax();
