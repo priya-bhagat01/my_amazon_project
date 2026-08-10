@@ -1,6 +1,7 @@
 import {products} from '../Amazonproject.js/Data.js';
 import {cart, saveStorage, addCartItems, removeFromCart, updateQuantity} from '../Amazonproject.js/Cart.js';
 import {deliveryOptions} from './DeliveryDate.js'
+
 export function updateItems() {
 	let ItemsQuantity = 0;
 
@@ -63,22 +64,19 @@ export function cartShippingPrice() {
 	return shippingFee;
 };
 
-export function updateTotalBeforeTax() {
+export function updateBillSummary() {
 	const itemTotal = cartItemPrice();
 	const shippingTotal = cartShippingPrice();
 
 	const totalBeforeTax = itemTotal + shippingTotal;
-
 	document.querySelector('.rawTotalPrice')
 	 .innerHTML = `₹${totalBeforeTax}`;
-	return totalBeforeTax;
-};
 
-export function calculateTax() {
-	const totalBeforeTax = updateTotalBeforeTax();
-	const tax = totalBeforeTax * 0.1;
-
+	const estimatedTax = totalBeforeTax * 0.1;
 	document.querySelector('.taxPrice')
-	 .innerHTML = `₹${tax.toFixed(2)}`;
-	return tax;
+	 .innerHTML = `₹${estimatedTax.toFixed(2)}`;
+
+	const orderTotal = totalBeforeTax + estimatedTax;
+	document.querySelector('.final-total-price')
+	 .innerHTML = `₹${orderTotal.toFixed(2)}`;
 };
