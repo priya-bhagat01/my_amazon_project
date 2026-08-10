@@ -8,6 +8,32 @@ import {updateHeaderQuantity} from './CheckoutHeader.js';
 updateHeaderQuantity();
 
 function renderCheckout() {
+	const orderButton = document.querySelector('.place-order');
+	const productsConatiner = document.querySelector('.added-products');
+
+	if (cart.length === 0) {
+		productsConatiner.innerHTML = `
+			<div class="empty-cart">
+				<p class="message">Your cart is empty.</p>
+				<a href="index.html" class="viewProducts">
+					<button class="View-products">View Products
+				</a>
+			</div>
+		`;
+
+		if (orderButton) {
+		orderButton.classList.add('is-disabled')
+		}
+
+		updateHeaderQuantity();
+		updateBillSummary();
+		return;
+	}
+
+	if (orderButton) {
+		orderButton.classList.remove('is-disabled');
+	}
+
 	let cartHTML = '';
 
 //1. I need to import id quantity and products data (cart[], and products)
@@ -179,7 +205,6 @@ cart.forEach((cartItem) => {
 	  		updateBillSummary();
 	  	});
 	  });
-
 };
 renderCheckout();
 

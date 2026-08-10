@@ -67,7 +67,12 @@
 	cursor: pointer;/*
 	margin-top: auto;*/
 	color: rgb(33, 33, 33 , 1.0);
+	opacity: 1;
+}
+.place-order.is-disabled{
 	opacity: 0.5;
+	cursor: not-allowed;
+	pointer-events: none; /*Prevents clicks when disabled*/
 }
 .place-order:hover{
 	background-color: rgb(247, 202, 0);
@@ -92,4 +97,25 @@
 .saveQuantity ,
 .updateQuantity{
 	display: inline-block;
+}
+.View-products{
+	border: none;
+	width: 100%;
+	max-width: 130px;
+	height: 35px;
+	border-radius: 8px;
+	background-color: #FFD814;
+	font-size: 16px;
+	cursor: pointer;/*
+	padding: 20px , 6px;*/
+	margin-top: auto;
+	color: rgb(33, 33, 33 , 1.0);
+}
+.viewProducts{
+	text-decoration: none;
+	color: black;
+}
+.message{
+	margin: 0;
+	padding-bottom: 10px;
 }
