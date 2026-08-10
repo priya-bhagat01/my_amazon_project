@@ -18,7 +18,8 @@ export function addCartItems(productId , selectedValue) {
  		} else {
  			cart.push({
  				productId: productId, 
- 				quantity: selectedValue
+ 				quantity: selectedValue,
+ 				deliveryOptionId: '1'
  			});
  		}
  	saveStorage();

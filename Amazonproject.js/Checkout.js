@@ -1,41 +1,29 @@
 "use strict";
 import {products} from '../Amazonproject.js/Data.js';
 import {cart, saveStorage, addCartItems, removeFromCart, updateQuantity} from '../Amazonproject.js/Cart.js';
-import {calculateDeliveryDate} from './DeliveryDate.js';
-
-//we have to make checkout at header change its value acc
-//1. what data do I need?
-//I need to update items in checkout as I add products to cart, [ARRAY]
-//2. what calculation do I need to perform?
-//I need to add number of items I put in cart, [loop through variable]
-//3. where does result go in DOM
-//It goes in checkout header brackets, innerHTML = ${variable}
-
-function updateHeaderQuantity() {
-
-	let cartQuantity = 0;
-
-	cart.forEach((item) => {
-	cartQuantity += item.quantity;
-});
-
-document.querySelector('.no-of-items')
- .innerHTML = `${cartQuantity} items`;
-};
+import {calculateDeliveryDate, deliveryOptions} from './DeliveryDate.js';
+import {updateItems, cartItemPrice} from './CheckoutBill.js';
+import {updateHeaderQuantity} from './CheckoutHeader.js';
 
 updateHeaderQuantity();
-
 
 function renderCheckout() {
 	let cartHTML = '';
 
-	//1. I need to import id quantity and products data (cart[], and products)
+//1. I need to import id quantity and products data (cart[], and products)
 //2. I need to loop through cart, match productId with id of cart item,
 // then I have to generate HTML for that product
 //3. I need to use added-items class and display it using DOM
 
 cart.forEach((cartItem) => {
 	const productId = cartItem.productId;
+    
+    const deliveryOptionId = cartItem.deliveryOptionId;
+	const deliveryOption = deliveryOptions.find(option => option.id === deliveryOptionId) || deliveryOptions[0];
+	//Takes that ID and searches through your deliveryOptions array 
+	//to find the full details object that matches that ID.
+	const dateString = calculateDeliveryDate(deliveryOption.deliveryDays);
+	
 
     let matchingProduct;
 	products.forEach((product) => {
@@ -46,7 +34,7 @@ cart.forEach((cartItem) => {
     cartHTML += `
     	<div class="item-status cart-item-conatiner-${matchingProduct.id}">
 	        <div class="delivery">
-	        	Delivery date: ${calculateDeliveryDate(0)}
+	        	Delivery date: ${dateString}
 	        </div>
 	        <div class="cart-details">
 		        <div class="product-image">
@@ -71,17 +59,32 @@ cart.forEach((cartItem) => {
 		        </div>
 		        <div class="shipping-date">
 		        	<div class="Delivery-free-date">
-			        	<input type="radio" name="date-${matchingProduct.id}" class="any-day">
+			        	<input 
+			        	   type="radio" name="date-${matchingProduct.id}"
+			        	   class="js-delivery-option any-day"
+			        	   data-product-id="${matchingProduct.id}"
+			        	   data-delivery-option-id="1"
+			        	   ${cartItem.deliveryOptionId === '1' ? 'checked' : ''}>
 			        	<p class="freeDate">${calculateDeliveryDate(7)}</p>
 			        	<p class="free">Free Shipping</p>
 		            </div>
 		            <div class="Next-delivery-date">
-			        	<input type="radio" name="date-${matchingProduct.id}" class="near-day">
+			        	<input 
+			        	   type="radio" name="date-${matchingProduct.id}" 
+			        	   class="js-delivery-option near-day"
+			        	   data-product-id="${matchingProduct.id}"
+			        	   data-delivery-option-id="2"
+			        	   ${cartItem.deliveryOptionId === '2' ? 'checked' : ''}>
 			        	<p class="nearDueDate">${calculateDeliveryDate(3)}</p>
 			        	<p class="next-date">₹50 - Shipping</p>
 		            </div>
 		            <div class="Delivery-date">
-			        	<input type="radio" name="date-${matchingProduct.id}" class="same-day"> 
+			        	<input 
+			        	   type="radio" name="date-${matchingProduct.id}" 
+			        	   class="js-delivery-option same-day"
+			        	   data-product-id="${matchingProduct.id}"
+			        	   data-delivery-option-id="3"
+			        	   ${cartItem.deliveryOptionId === '3' ? 'checked' : ''}> 
 			        	<!-- doesn't allow to change radio button from one product to other -->
 			        	<p class="nearestDate">${calculateDeliveryDate(1)}</p>
 			        	<p class="another-date">₹100 - Shipping</p>
@@ -158,51 +161,26 @@ cart.forEach((cartItem) => {
 	 	});
 	});
 
+	 document.querySelectorAll('.js-delivery-option')
+	  .forEach((element) => {
+	  	element.addEventListener('click', () => {
+	  		const productId = element.dataset.productId;
+	  		const deliveryOptionId = element.dataset.deliveryOptionId;
+
+	  		const matchingCartItem = cart.find(item => item.productId === productId);
+	  		
+	  		if (matchingCartItem) {
+	  			matchingCartItem.deliveryOptionId = deliveryOptionId;
+	  		}
+	  		
+	  		saveStorage();
+	  		renderCheckout();
+	  	});
+	  });
+
 };
 renderCheckout();
 
-function updateItems() {
-	let ItemsQuantity = 0;
-
-	cart.forEach((items) => {
-		ItemsQuantity += items.quantity;
-	});
-
-document.querySelector('.itemsNo')
- .innerHTML = `Items(${ItemsQuantity}):`;
-
-saveStorage();
-};
-
 updateItems();
-
-//loop through products
-//Get product id from cart
-//Get product price from products
-//Multiply products price with cart quantity and put price using DOM
-
-function cartItemPrice() {
-	let productPrice = 0;
-
-	cart.forEach((cartItem) => {
-		const productId = cartItem.productId;
-		const cartItemQuantity = cartItem.quantity;
-
-		let matchingProduct;
-
-		products.forEach((product) => {
-			if (product.id === productId) {
-				matchingProduct = product
-			};
-		});
-
-		if (matchingProduct) {
-			productPrice += matchingProduct.price*cartItemQuantity;
-		}
-	});
-
-	document.querySelector('.itemsPrice')
-     .innerHTML = `₹${productPrice}`;
-};
 
 cartItemPrice();
