@@ -1,6 +1,6 @@
 "use strict";
 import {products} from '../Amazonproject.js/Data.js';
-import {cart, saveStorage, addCartItems, removeFromCart, updateQuantity} from '../Amazonproject.js/Cart.js';
+import {cart, saveStorage, addCartItems, removeFromCart, updateQuantity, resetCart} from '../Amazonproject.js/Cart.js';
 import {calculateDeliveryDate, deliveryOptions} from './DeliveryDate.js';
 import {updateItems, cartItemPrice, cartShippingPrice, updateBillSummary} from './CheckoutBill.js';
 import {updateHeaderQuantity} from './CheckoutHeader.js';
@@ -205,6 +205,30 @@ cart.forEach((cartItem) => {
 	  		updateBillSummary();
 	  	});
 	  });
+
+	const placeOrder = document.querySelector('.place-order')
+	placeOrder.addEventListener('click', () => {
+
+		if (cart.length === 0) {
+			return;
+		}
+
+		//Gets previous orders from storage
+		const orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+		const newOrder = {
+			id: crypto.randomUUID(), //Generate nique id for each placed order
+			orderTime: new Date().toLocaleDateString(), //Gets date of order
+			items: cart
+		};
+
+		orders.unshift(newOrder); //Saves each order on top of other opp to push
+		localStorage.setItem('orders', JSON.stringify(orders));
+
+		resetCart();
+
+		window.location.href = 'orders.html'; //Works same as a tag here just it is inside event listener
+	})
 };
 renderCheckout();
 

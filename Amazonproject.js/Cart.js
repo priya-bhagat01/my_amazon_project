@@ -46,3 +46,8 @@ export function updateQuantity(productId, newQuantity) {
 	});
 	saveStorage();
 };
+
+export function resetCart() {
+	cart = [];
+	saveStorage();
+}
