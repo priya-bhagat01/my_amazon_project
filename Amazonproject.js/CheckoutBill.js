@@ -41,7 +41,7 @@ export function cartItemPrice() {
 
 	document.querySelector('.itemsPrice')
      .innerHTML = `₹${productPrice}`;
-     return productPrice;
+    return productPrice;
 };
 
 export function cartShippingPrice() {
@@ -60,7 +60,7 @@ export function cartShippingPrice() {
 
 	document.querySelector('.shippingPrice')
 	 .innerHTML = `₹${shippingFee}`;
-	 return shippingFee;
+	return shippingFee;
 };
 
 export function updateTotalBeforeTax() {
@@ -71,4 +71,14 @@ export function updateTotalBeforeTax() {
 
 	document.querySelector('.rawTotalPrice')
 	 .innerHTML = `₹${totalBeforeTax}`;
+	return totalBeforeTax;
+};
+
+export function calculateTax() {
+	const totalBeforeTax = updateTotalBeforeTax();
+	const tax = totalBeforeTax * 0.1;
+
+	document.querySelector('.taxPrice')
+	 .innerHTML = `₹${tax.toFixed(2)}`;
+	return tax;
 };
