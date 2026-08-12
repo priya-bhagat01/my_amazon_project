@@ -2,6 +2,7 @@
 	border: 1px solid rgb(222, 222, 222);
 	border-radius: 4px;
 	padding: 16px 8px;
+	width: 370px;
 }
 .order-title{
 	font-weight: bold;
@@ -24,7 +25,7 @@
 .shipping-options ,
 .rawTotal-name ,
 .tax-percent{
-	width: 260px;
+	width: 270px;
 }
 .finalTotal-price{
 	width: 50px;

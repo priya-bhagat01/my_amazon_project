@@ -79,4 +79,6 @@ export function updateBillSummary() {
 	const orderTotal = totalBeforeTax + estimatedTax;
 	document.querySelector('.final-total-price')
 	 .innerHTML = `₹${orderTotal.toFixed(2)}`;
+
+	return orderTotal.toFixed(2);
 };
