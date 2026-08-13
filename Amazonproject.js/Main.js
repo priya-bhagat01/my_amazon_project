@@ -2,6 +2,7 @@
 import {products} from '../Amazonproject.js/Data.js';
 import {cart, saveStorage, addCartItems} from '../Amazonproject.js/Cart.js';
 
+function renderProducts(products) {
 let productsHTML = '';
 
 products.forEach((product) => {
@@ -46,7 +47,37 @@ products.forEach((product) => {
 
 document.querySelector('.Amazon-home-page')
  .innerHTML = productsHTML;
+}
+renderProducts(products);
 
+function performSearch() {
+	const searchInputEl = document.querySelector('.searchButton');
+	const searchInput = (searchInputEl?.value || '').toLowerCase().trim();
+
+	const filteredProducts = products.filter((product) => {
+		const productName = product.name ? product.name.toLowerCase() : '';
+		return productName.includes(searchInput);
+	});
+
+	renderProducts(filteredProducts);
+};
+
+document.querySelector('.searchIcon')
+ .addEventListener('click', () => {
+ 	performSearch();
+ });
+
+document.querySelector('.searchIcon')
+ .addEventListener('keydown', (event) => {
+ 	if (event.key === 'Enter') {
+ 	performSearch();
+    }
+ });
+
+document.querySelector('.searchIcon')
+ .addEventListener('input', () => {
+ 	performSearch();
+ });
 // 1. Get the ID of the thing clicked.
 // 2. Search the existing list to see if we already have it.
 // 3. IF found     → Increase its count.

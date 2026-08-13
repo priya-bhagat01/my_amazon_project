@@ -45,6 +45,15 @@ a:-webkit-any-link {
 	padding-left: 5px;*/
 	align-items: center;
 }
+.search-button{
+	background-color: rgb(254, 189, 105 , 1.0);
+	height: 43px;
+	border-bottom-right-radius: 8px;
+	border-top-right-radius: 8px;
+	margin-left: -3px;
+	border: none;
+	vertical-align: top;
+}
 .searchButton{
 	display: flex;
 	flex: 1;
