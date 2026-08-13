@@ -139,3 +139,24 @@ document.querySelectorAll('.BuyAgainButton')
  	});
  	
  });
+ 
+function handelSearch() {
+	const searchInputEl = document.querySelector('.searchButton');
+	const searchButtonEl = document.querySelector('.searchIcon')
+
+	function redirectToSearch() {
+		const searchInput = (searchInputEl?.value || '').trim();
+		if (searchInput) {
+			window.location.href = `index.html?search=${encodeURIComponent(searchInput)}`;
+		}
+	}
+
+	searchButtonEl?.addEventListener('click', redirectToSearch);
+
+	searchInputEl?.addEventListener('keydown', (event) => {
+		if (event.key === 'Enter') {
+			redirectToSearch();
+		}
+	});
+}
+handelSearch();

@@ -50,25 +50,43 @@ document.querySelector('.Amazon-home-page')
 }
 renderProducts(products);
 
-function performSearch() {
+// Get search query from URL bar (if present)
+const url = new URL(window.location.href);
+const searchQuery = url.searchParams.get('search');
+
+if (searchQuery) {
 	const searchInputEl = document.querySelector('.searchButton');
-	const searchInput = (searchInputEl?.value || '').toLowerCase().trim();
+	if (searchInputEl) {
+		searchInputEl.value = searchQuery;
+	}
+	performSearch(searchQuery);
+} else{
+	renderProducts(products);
+}
+
+function performSearch(customSearchTerm) {
+	const searchInputEl = document.querySelector('.searchButton');
+	const searchTerm = (customSearchTerm !== undefined ? customSearchTerm : (searchInputEl?.value || ''))
+	 .toLowerCase()
+	 .trim();
+	// const searchInput = (searchInputEl?.value || '').toLowerCase().trim();
 
 	const filteredProducts = products.filter((product) => {
 		const productName = product.name ? product.name.toLowerCase() : '';
-		return productName.includes(searchInput);
+		return productName.includes(searchTerm);
 	});
 
 	renderProducts(filteredProducts);
 };
 
+
 document.querySelector('.searchIcon')
- .addEventListener('click', () => {
+ ?.addEventListener('click', () => {
  	performSearch();
  });
 
 document.querySelector('.searchIcon')
- .addEventListener('keydown', (event) => {
+ ?.addEventListener('keydown', (event) => {
  	if (event.key === 'Enter') {
  	performSearch();
     }
