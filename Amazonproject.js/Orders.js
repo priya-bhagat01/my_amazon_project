@@ -43,12 +43,14 @@ function placedOrderItems() {
 						<div class="order-quantity">
 							<p>Quantity: ${cartItem.quantity}</p>
 						</div>
+						<div class="added-message" data-product-id="${matchingProduct.id}">
+					    </div>
 						<div class="buy-again">
-							<button class="BuyAgainButton">
+							<button class="BuyAgainButton" data-product-id="${matchingProduct.id}">
 								<div class="buyImage">
 									<img src="Amazonproject.png/BuyAgain.jpg" class="BuyAgainImage">
 								</div>
-								<div class="BuyAgainPara">
+								<div class="BuyAgainPara" data-product-id="${matchingProduct.id}">
 									Buy it again
 								</div>
 							</button>
@@ -91,3 +93,43 @@ function placedOrderItems() {
 	 .innerHTML = orderHTML;
 };
 placedOrderItems();
+
+let messageTimeouts;
+
+function updateCart() {
+	let cartQuantity = 0;
+
+ 		cart.forEach((cartItem) => {
+ 			cartQuantity += cartItem.quantity;
+ 		});
+
+ 		document.querySelector('.cartCount')
+ 		 .innerHTML = cartQuantity;
+ 	};
+
+updateCart();
+
+document.querySelectorAll('.BuyAgainButton')
+ .forEach((button) => {
+ 	button.addEventListener('click', () => {
+ 		const productId = button.dataset.productId;
+
+ 		const message = document.querySelector(`.added-message[data-product-id="${productId}"]`);
+
+ 		message.innerHTML = `<img class="added-to-cart" src="Amazonproject.png/Checkmark.jpg">
+		        Added`;
+		message.classList.add('style-message');
+
+		if (messageTimeouts) {
+			clearTimeout(messageTimeouts);
+		}
+
+		messageTimeouts = setTimeout(() => {
+			message.classList.remove('style-message');
+		}, 1500);
+
+ 		addCartItems(productId);
+ 		updateCart();
+ 	});
+ 	
+ });

@@ -30,6 +30,7 @@ p{
 .order-container{
 	display: grid;
 	grid-template-columns: 1fr;
+	margin-top: 48px;
 }
 .order-head{
 	background-color: rgb(240, 242, 242);
@@ -68,11 +69,17 @@ p{
 .order-placed-details{
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	border: 1px solid rgb(213, 217, 217);
+	border-top: none;
+	border-right: 1px solid rgb(213, 217, 217);
+	border-left: 1px solid rgb(213, 217, 217);
 	margin-top: -1px;
 	padding-bottom: 40px;
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
+	row-gap: 60px;
+}
+.order-placed-details:last-child{
+	border-bottom: 1px solid rgb(213, 217, 217);
 }
 .imageContainer ,
 .product-image{
@@ -81,6 +88,7 @@ p{
 	width: 110px;
 	height: 110px;
 	margin-bottom: 20px;
+	object-fit: contain;
 }
 .order-details{
 	width: 400px;
@@ -161,4 +169,17 @@ p{
 .tracking-para{
 	font-size: 15px;
 	padding-bottom: 5px;
+}
+.added-message{
+	display: flex;
+	height: 20px;
+	opacity: 0;
+}
+.added-to-cart{
+	height: 20px;
+	margin-right: 5px;
+}
+.style-message{
+	opacity: 1;
+	transition: 0.2s;
 }

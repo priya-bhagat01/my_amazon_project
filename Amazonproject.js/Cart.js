@@ -13,12 +13,13 @@ export function addCartItems(productId , selectedValue) {
 	 		};
  		});
 
+ 		const quantityToAdd = Number(selectedValue)	|| 1
  		if (matchingItem) {
- 			matchingItem.quantity += selectedValue ;
+ 			matchingItem.quantity += quantityToAdd ;
  		} else {
  			cart.push({
  				productId: productId, 
- 				quantity: selectedValue,
+ 				quantity: quantityToAdd,
  				deliveryOptionId: '1'
  			});
  		}
@@ -50,4 +51,4 @@ export function updateQuantity(productId, newQuantity) {
 export function resetCart() {
 	cart = [];
 	saveStorage();
-}
+};
