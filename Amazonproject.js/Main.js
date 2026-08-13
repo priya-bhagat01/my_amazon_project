@@ -3,6 +3,17 @@ import {products} from '../Amazonproject.js/Data.js';
 import {cart, saveStorage, addCartItems} from '../Amazonproject.js/Cart.js';
 
 function renderProducts(products) {
+
+const productsGrid = document.querySelector('.Amazon-home-page')
+if (products.length === 0) {
+	productsGrid.innerHTML = `
+		<div class="no-products-found">
+           No products matched your search.
+        </div>
+	`;
+	return;
+}
+
 let productsHTML = '';
 
 products.forEach((product) => {
@@ -45,8 +56,7 @@ products.forEach((product) => {
 	`
 });
 
-document.querySelector('.Amazon-home-page')
- .innerHTML = productsHTML;
+productsGrid.innerHTML = productsHTML;
 }
 renderProducts(products);
 

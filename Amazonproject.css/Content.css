@@ -135,3 +135,11 @@ p{
 	opacity: 1;
 	transition: 0.2s;
 }
+.no-products-found {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  margin-top: 40px;
+  grid-column: 1 / -1; /* Spans across all grid columns */
+  text-align: center;
+}
