@@ -2,10 +2,10 @@
 import {products} from '../Amazonproject.js/Data.js';
 import {cart, saveStorage, addCartItems} from '../Amazonproject.js/Cart.js';
 
-function renderProducts(products) {
+function renderProducts(productsToRender) {
 
 const productsGrid = document.querySelector('.Amazon-home-page')
-if (products.length === 0) {
+if (productsToRender.length === 0) {
 	productsGrid.innerHTML = `
 		<div class="no-products-found">
            No products matched your search.
@@ -16,7 +16,7 @@ if (products.length === 0) {
 
 let productsHTML = '';
 
-products.forEach((product) => {
+productsToRender.forEach((product) => {
 	productsHTML += `
 		<div class="main-page">
 			<div class="cartItems">
@@ -57,6 +57,7 @@ products.forEach((product) => {
 });
 
 productsGrid.innerHTML = productsHTML;
+attachAddToCartListeners();
 }
 renderProducts(products);
 
@@ -87,6 +88,7 @@ function performSearch(customSearchTerm) {
 	});
 
 	renderProducts(filteredProducts);
+	
 };
 
 
@@ -126,6 +128,8 @@ function updateCart() {
 
 updateCart();
 
+function attachAddToCartListeners() {
+
 document.querySelectorAll('.cartButton')
  .forEach((button) => {
  	button.addEventListener(('click') , () => {
@@ -160,3 +164,4 @@ document.querySelectorAll('.cartButton')
 		updateCart();
  	});
 });
+}
