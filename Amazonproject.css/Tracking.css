@@ -19,7 +19,7 @@ p{
 	margin-top: 12px;
 }
 .view-orders{
-	margin-bottom: 25px;
+	margin-bottom: 30px;
 }
 .order-page{
 	color: #017cb6;
@@ -28,7 +28,7 @@ p{
 	color: rgb(196, 80, 0);
 }
 .arriving-date{
-	font-size: 24px;
+	font-size: 25px;
 	font-weight: bold;
 }
 .order-name ,
@@ -49,6 +49,8 @@ p{
 .order-image ,
 .placed-order-image{
 	width: 150px;
+	height: 100px;
+	object-fit: contain;
 }
 .order-image{
 	margin-bottom: 50px;

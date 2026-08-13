@@ -56,7 +56,8 @@ function placedOrderItems() {
 							</button>
 						</div>
 					</div>
-					<a href = "tracking.html">
+					<a href = "tracking.html?orderId=${order.id}&productId=${matchingProduct.id}"> 
+						<!-- the code after ? finds which product track was clicked-->
 						<div class="track-order">
 							<button class="tracking-package">
 								<p class="tracking-para">Track package</p>
