@@ -13,3 +13,75 @@ p{
 	margin-bottom: 5px;
 	object-fit: contain;
 }
+.main{
+	margin-left: 255px;
+	width: 846px;
+	margin-top: 12px;
+}
+.view-orders{
+	margin-bottom: 25px;
+}
+.order-page{
+	color: #017cb6;
+}
+.order-page:hover{
+	color: rgb(196, 80, 0);
+}
+.arriving-date{
+	font-size: 24px;
+	font-weight: bold;
+}
+.order-name ,
+.order-name p{
+	margin-bottom: 2px;
+	padding-bottom: 0;
+	font-weight: 400;
+}
+.order-quantity ,
+.order-quantity p{
+	margin-top: 0;
+	padding-top: 0;
+	font-weight: 400;
+}
+.order-quantity{
+	margin-bottom: 25px;
+}
+.order-image ,
+.placed-order-image{
+	width: 150px;
+}
+.order-image{
+	margin-bottom: 50px;
+}
+.Progress-bar-head{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	width: 846px;
+	font-size: 20px;
+	font-weight: 500;
+	margin-bottom: 12px;
+}
+.left-section{
+	color: rgb(6, 125, 98);
+}
+.mid-section{
+	display: grid;
+	justify-content: center;
+}
+.right-section{
+	display: grid;
+	justify-content: end;
+}
+.Progress-bar-container{
+	width: 846px;
+	height: 30px;
+	border: 1px solid rgb(200, 200, 200);
+	border-radius: 15px;
+}
+.Progress-bar{
+	height: 100%;
+    background-color: green;
+    border-radius: 50px;
+    width: 8%;
+    transition: width 1s;
+}
