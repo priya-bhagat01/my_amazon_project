@@ -58,3 +58,16 @@ const trackingHTML = `
 `;
 document.querySelector('.main')
  .innerHTML = trackingHTML;
+ 
+function updateCart() {
+	let cartQuantity = 0;
+
+ 		cart.forEach((cartItem) => {
+ 			cartQuantity += cartItem.quantity;
+ 		});
+
+ 		document.querySelector('.cartCount')
+ 		 .innerHTML = cartQuantity;
+ 	};
+
+updateCart();
