@@ -4,6 +4,7 @@ import {deliveryOptions, calculateDeliveryDate} from './DeliveryDate.js';
 import {orders, addOrder} from './OrderDetails.js'
 import {cart, saveStorage, addCartItems, removeFromCart, updateQuantity, resetCart} from '../Amazonproject.js/Cart.js';
 import {updateItems, cartItemPrice, cartShippingPrice, updateBillSummary} from './CheckoutBill.js';
+import {calculateDeliveryProgress} from './TrackingDate.js';
 
 //Gets full current web address of page
 const url = new URL(window.location.href);
@@ -41,13 +42,13 @@ const trackingHTML = `
 				<img class="placed-order-image" src="${matchingProduct.image}">
 			</div>
 			<div class="Progress-bar-head">
-				<div class="left-section">
+				<div class="left-section js-preparing">
 					<p>Preparing</p>
 				</div>
-				<div class="mid-section">
+				<div class="mid-section js-shipped">
 					<p>Shipped</p>
 				</div>
-				<div class="right-section">
+				<div class="right-section js-delivered">
 					<p>Delivered</p>
 				</div>
 			</div>
@@ -58,7 +59,7 @@ const trackingHTML = `
 `;
 document.querySelector('.main')
  .innerHTML = trackingHTML;
- 
+
 function updateCart() {
 	let cartQuantity = 0;
 
@@ -71,3 +72,21 @@ function updateCart() {
  	};
 
 updateCart();
+
+const progressPercentage = calculateDeliveryProgress(order.orderTime, dateString);
+
+const progressBarEl = document.querySelector('.Progress-bar');
+progressBarEl.style.width = `${progressPercentage}%`;
+
+const preparingLabel = document.querySelector('.js-preparing');
+const shippedLabel = document.querySelector('.js-shipped');
+const deliveredLabel = document.querySelector('.js-delivered');
+
+[preparingLabel, shippedLabel, deliveredLabel].forEach(el => el.classList.remove('current-status'));
+if (progressPercentage < 50) {
+	preparingLabel.classList.add('current-status');
+} else if (progressPercentage < 100) {
+	shippedLabel.classList.add('current-status');
+} else {
+	deliveredLabel.classList.add('current-status');
+};

@@ -9,7 +9,7 @@ export function addOrder() {
 
 	const newOrder = {
 		id: crypto.randomUUID(), //Generate nique id for each placed order
-		orderTime: new Date().toLocaleDateString('en-US', {month: 'long', day: 'numeric'}), //Gets date of order
+		orderTime: new Date().toISOString(), //Gets date of order
 		totalCost: calculatedTotal || 0,
 		items: cart
     };

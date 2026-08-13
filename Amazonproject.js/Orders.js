@@ -18,6 +18,10 @@ function placedOrderItems() {
 		const orderTime = order.orderTime;
 		const totalCost = order.totalCost;
 
+		const formattedOrderTime = new Date(order.orderTime).toLocaleDateString('en-US', {
+			month: 'long',
+			day: 'numeric'
+		});
 
 		order.items.forEach((cartItem) => {
 			const matchingProduct = products.find(product => product.id === cartItem.productId);
@@ -74,7 +78,7 @@ function placedOrderItems() {
 					<div class="left-section">
 						<div class="order-placed">
 							<p class="order-status">Order Placed: </p>
-							<p class="order-placed-date">${orderTime}</p>
+							<p class="order-placed-date">${formattedOrderTime}</p>
 					    </div>
 					    <div class="bill">
 							<p class="total-bill">Total: </p>
