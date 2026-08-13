@@ -56,12 +56,13 @@ function placedOrderItems() {
 							</button>
 						</div>
 					</div>
-
-					<div class="track-order">
-						<button class="tracking-package">
-							<p class="tracking-para">Track package</p>
-						</button>
-					</div>
+					<a href = "tracking.html">
+						<div class="track-order">
+							<button class="tracking-package">
+								<p class="tracking-para">Track package</p>
+							</button>
+						</div>
+					</a>
 				</div>`;
 		});
 

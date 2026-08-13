@@ -183,3 +183,6 @@ p{
 	opacity: 1;
 	transition: 0.2s;
 }
+a{
+	text-decoration: none;
+}
