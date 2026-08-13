@@ -84,7 +84,7 @@ function placedOrderItems() {
 					    <p class="order-placed-uid">${orderId}</p>
 					</div>
 				</div>
-			</div>`
+			`
 			 + productListHTML 
 			 + `</div>`;
 		});
