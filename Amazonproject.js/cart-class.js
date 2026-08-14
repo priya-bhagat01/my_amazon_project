@@ -1,18 +1,18 @@
 class Cart {
 	cartItems;
-	lockStorageKey;
+	#lockStorageKey; //Makes this property private
 
 	constructor(lockStorageKey) {			
-		this.lockStorageKey = lockStorageKey;
-		this.loadFromStorage();
+		this.#lockStorageKey = lockStorageKey;
+		this.#loadFromStorage();
 	}
 
-	loadFromStorage() {
-		this.cartItems = JSON.parse(localStorage.getItem(this.lockStorageKey)) || []
+	#loadFromStorage() {
+		this.cartItems = JSON.parse(localStorage.getItem(this.#lockStorageKey)) || []
 	}
 
 	saveStorage() {
-		localStorage.setItem(this.lockStorageKey, JSON.stringify(this.cartItems));
+		localStorage.setItem(this.#lockStorageKey, JSON.stringify(this.cartItems));
 	}
 
 	addCartItems(productId , selectedValue) {
