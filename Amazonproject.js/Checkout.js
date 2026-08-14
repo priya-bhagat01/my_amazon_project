@@ -5,6 +5,7 @@ import {calculateDeliveryDate, deliveryOptions} from './DeliveryDate.js';
 import {updateItems, cartItemPrice, cartShippingPrice, updateBillSummary} from './CheckoutBill.js';
 import {updateHeaderQuantity} from './CheckoutHeader.js';
 import {orders, addOrder} from './OrderDetails.js';
+import './cart-oop.js';
 
 updateHeaderQuantity();
 
