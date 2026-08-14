@@ -1,6 +1,7 @@
 "use strict";
 import {products} from '../Amazonproject.js/Data.js';
 import {cart, saveStorage, addCartItems} from '../Amazonproject.js/Cart.js';
+import './Data-class.js';
 
 function renderProducts(productsToRender) {
 
