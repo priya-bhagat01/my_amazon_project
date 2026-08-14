@@ -12,7 +12,35 @@ class Product {
 		this.ratings = productDetails.ratings;
 		this.price = productDetails.price;
 	}
+
+	getStars() {
+		return `Amazonproject.png/Rating-${(product.ratings.stars)*10}.jpg`;
+	}
 }
+
+class Clothing extends Product{ //Inherits all the properties from product
+	sizeChartLink;
+
+	constructor(productDetails) {
+		super(productDetails); //Inherits all product details from parent class
+		this.sizeChartLink = productDetails.sizeChartLink;
+	}
+} 
+
+const tshirt = new Clothing({
+	id: "6ef2dd62-984e-4af1-b207-dc4e76b94c1b",
+	image: 'Amazonproject.png/Tshirt.jpg' ,
+	name: 'Adults Plain Cotton T-Shirt - 2 Pack' ,
+	ratings: {
+		stars: 4.5 ,
+		count: 56
+	} ,
+	price: 549 ,
+	type: "clothing" , //discriminator property
+	sizeChartLink: "Amazonproject.png/clothing-size-chart.jpg" 
+})
+
+console.log(tshirt);
 
 export const products = [
 {
@@ -83,7 +111,9 @@ export const products = [
 		stars: 4.5 ,
 		count: 317
 	} ,
-	price: 899
+	price: 899	,
+	type: "clothing" ,
+	sizeChartLink: "Amazonproject.png/clothing-size-chart.jpg"
 } ,
 {
 	id: "197afe0c-cd6b-411a-9657-57de57f9dbc9",
@@ -123,7 +153,9 @@ export const products = [
 		stars: 4.5 ,
 		count: 235
 	} ,
-	price: 790
+	price: 790	,
+	type: "clothing" ,
+	sizeChartLink: "Amazonproject.png/clothing-size-chart.jpg"
 } ,
 {
 	id: "76647a83-5685-4be8-b143-4d502dc0b6d7",
@@ -164,7 +196,9 @@ export const products = [
 		stars: 4.0 ,
 		count: 160
 	} ,
-	price: 989
+	price: 989	,
+	type: "clothing" ,
+	sizeChartLink: "Amazonproject.png/clothing-size-chart.jpg"
 } ,
 {
 	id: "58864295-92dc-463a-8fa3-ac1476e02c1a",
@@ -214,7 +248,9 @@ export const products = [
 		stars: 4.5 ,
 		count: 2465
 	} ,
-	price: 1104	
+	price: 1104	,
+	type: "clothing" ,
+	sizeChartLink: "Amazonproject.png/clothing-size-chart.jpg"
 } ,
 {
 	id: "7f19d210-1846-4b19-936c-d6c793adf1a5",
@@ -244,7 +280,9 @@ export const products = [
 		stars: 4.5 ,
 		count: 2556
 	} ,
-	price: 1499
+	price: 1499	,
+	type: "clothing" ,
+	sizeChartLink: "Amazonproject.png/clothing-size-chart.jpg"
 } ,
 {
 	id: "79aa082a-afe2-4215-b3a8-b04d1f9764e0",
@@ -284,7 +322,9 @@ export const products = [
 		stars: 4.5 ,
 		count: 9017
 	} ,
-	price: 1190
+	price: 1190	,
+	type: "clothing" ,
+	sizeChartLink: "Amazonproject.png/clothing-size-chart.jpg"
 } ,
 {
 	id: "f0c09b4a-3af6-4a1d-b903-2c5ad4aac6e6",
@@ -334,7 +374,9 @@ export const products = [
 		stars: 4.5 ,
 		count: 248
 	} ,
-	price: 1299
+	price: 1299	,
+	type: "clothing" ,
+	sizeChartLink: "Amazonproject.png/clothing-size-chart.jpg"
 } ,
 {
 	id: "fb8211a3-e746-448d-bd37-96e100777e5c",
@@ -434,10 +476,15 @@ export const products = [
 		stars: 4.5 ,
 		count: 3157
 	} ,
-	price: 1275
+	price: 1275	,
+	type: "clothing" ,
+	sizeChartLink: "Amazonproject.png/clothing-size-chart.jpg"
 }
-].map((productDetails) => {
+].map((productDetails) => {	//map loops through array
+	if (productDetails.type === 'clothing') {
+		return new Clothing(productDetails);
+	}
 	return new Product(productDetails);
-}); //map loops through array
+}); 
 
 console.log(products);
