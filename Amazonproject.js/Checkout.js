@@ -6,6 +6,7 @@ import {updateItems, cartItemPrice, cartShippingPrice, updateBillSummary} from '
 import {updateHeaderQuantity} from './CheckoutHeader.js';
 import {orders, addOrder} from './OrderDetails.js';
 import './cart-oop.js';
+import './cart-class.js';
 
 updateHeaderQuantity();
 

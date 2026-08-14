@@ -1,14 +1,19 @@
-function Cart(lockStorageKey) {
-	const cart = {
-	cartItems: undefined,
+class Cart {
+	cartItems;
+	lockStorageKey;
+
+	constructor(lockStorageKey) {			
+		this.lockStorageKey = lockStorageKey;
+		this.loadFromStorage();
+	}
 
 	loadFromStorage() {
-		this.cartItems = JSON.parse(localStorage.getItem(lockStorageKey)) || []
-	},
+		this.cartItems = JSON.parse(localStorage.getItem(this.lockStorageKey)) || []
+	}
 
 	saveStorage() {
-		localStorage.setItem(lockStorageKey, JSON.stringify(this.cartItems));
-	},
+		localStorage.setItem(this.lockStorageKey, JSON.stringify(this.cartItems));
+	}
 
 	addCartItems(productId , selectedValue) {
 	 	let matchingItem; 
@@ -30,7 +35,7 @@ function Cart(lockStorageKey) {
  			});
  		}
  	this.saveStorage();
-	},
+	}
 
 	removeFromCart(productId) {
 		const newCart = [];
@@ -43,7 +48,7 @@ function Cart(lockStorageKey) {
 
 	this.cartItems = newCart;
 	this.saveStorage();
-	},
+	}
 
 	updateQuantity(productId, newQuantity) {
 		this.cartItems.forEach((cartItem) => {
@@ -52,22 +57,16 @@ function Cart(lockStorageKey) {
 			}
 		});
 	this.saveStorage();
-	},
+	}
 
 	resetCart() {
 		this.cart = [];
 	this.saveStorage();
 	}
-	};
-
-	return cart;
 }
 
-const cart = Cart('cart-oop');
-const businessCart = Cart('cart-business');
-
-cart.loadFromStorage();
-businessCart.loadFromStorage();
+const cart = new Cart('cart-oop');
+const businessCart = new Cart('cart-business');
 
 cart.addCartItems('909a2614-fcc9-4dfe-b247-470dfdeecd1e');
 cart.addCartItems('76647a83-5685-4be8-b143-4d502dc0b6d7');
