@@ -151,3 +151,32 @@ a:-webkit-any-link {
 	top: 10px;
 	right: 68px;
 }
+.warning{
+	display: flex;
+	background-color: #FFFACD;
+}
+.warning-image{
+	margin-top: 20px;
+	margin-right: 10px;
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+}
+.disclaimer h1{
+	display: inline-block;
+	font-size: 16px;
+	padding: 0;
+	margin: 0;
+}
+.disclaimer-para{
+	display: inline-block;
+	display: 15px;
+	padding: 0;
+	margin: 0;
+}
+.bold{
+	display: 13px;
+	font-weight: bold;
+	padding: 0;
+	margin: 0;
+}
