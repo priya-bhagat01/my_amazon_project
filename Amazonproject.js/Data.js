@@ -152,7 +152,7 @@ export const products = [
 } ,
 {
 	id: "58864295-92dc-463a-8fa3-ac1476e02c1a",
-	image: 'Amazonproject.png/Electric-hot-water-kettle.jpg' ,
+	image: 'Amazonproject.png/electric-hot-water-kettle.jpg' ,
 	name: 'Electric Glass and Steel Hot Tea Water Kettle - 1.7-Liter' ,
 	ratings: {
 		stars: 5.0 ,
